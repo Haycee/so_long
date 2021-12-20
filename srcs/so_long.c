@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:34 by agirardi          #+#    #+#             */
-/*   Updated: 2021/12/17 18:41:35 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2021/12/20 17:37:51 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,17 @@ int	main(int argc, char **argv)
 		printf("Error\nFailed to create map\n");
 		exit(0);
 	}
-	if (!parse_map(data.map))
+	if (!parse_map(&data.map))
 	{
 		printf("Error\nInvalid map\n");
 		exit(0);
 	}
+	modify_map(&data.map);
 	create_window(&data.win);
 	sprites_ini(&data.sprites, &data.win);
+	player_ini(&data.map, &data.player);
 	mlx_hook(data.win.window, 2, 0, get_key, &data);
-	render_map(&data.map, &data.win, &data.sprites);
+	render_map(&data);
 	mlx_loop(data.win.mlx);
 }
 

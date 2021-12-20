@@ -6,7 +6,7 @@
 #    By: agirardi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 09:57:24 by agirardi          #+#    #+#              #
-#    Updated: 2021/12/17 17:54:46 by agirardi         ###   ########lyon.fr    #
+#    Updated: 2021/12/20 12:39:17 by agirardi         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS		=	./srcs/so_long.c \
 				./srcs/map_parser.c \
 				./srcs/map_render.c \
 				./srcs/key.c \
+				./srcs/player.c \
 
 LIBFT_AR	=	./libft/libft.a
 

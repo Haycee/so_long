@@ -31,7 +31,7 @@ CFLAGS		=	-Wall -Wextra -Werror -I mlx
 
 RM			=	rm -rf
 
-all : libft ${NAME}
+all : mlx libft ${NAME}
 
 libft:
 	@make -C ./libft --no-print-directory

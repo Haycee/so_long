@@ -62,11 +62,12 @@ int	main(int argc, char **argv)
 		exit(0);
 	}
 	modify_map(&data.map);
-	create_window(&data.win);
+	create_window(&data.win, &data.map);
 	sprites_ini(&data.sprites, &data.win);
 	player_ini(&data.map, &data.player);
 	mlx_hook(data.win.window, 2, 0, get_key, &data);
-	render_map(&data);
+	// render_map(&data);
+	camera_player(&data);
 	mlx_loop(data.win.mlx);
 }
 

@@ -63,13 +63,21 @@ typedef struct s_player
 	int		collected;
 } t_player;
 
+typedef struct s_camera
+{
+	int		x;
+	int		y;
+} t_camera;
+
 typedef struct s_data
 {
 	t_map		map;
 	t_win		win;
 	t_sprites	sprites;
 	t_player	player;
+	t_camera	camera;
 } t_data;
+
 
 /* so_long_utils.c */
 
@@ -88,9 +96,10 @@ int	is_rectangular(t_map *map);
 
 /* map_render.c */
 
-void	create_window(t_win *win);
-void	select_sprite(t_map *map, t_win *win, t_sprites *sprites, t_player *player);
-void	render_map(t_data *data);
+void	create_window(t_win *win, t_map *map);
+void	select_sprite(t_data *data, int x, int y);
+// void	render_map(t_data *data);
+void	camera_player(t_data *data);
 void	modify_map(t_map *map);
 
 /* key.c */

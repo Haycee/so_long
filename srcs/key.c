@@ -29,12 +29,7 @@ int	get_key(int key, t_data *data)
 		else
 			printf("loose");
 	}
-	// print_key(key);
-	// printf("steps %d\n", data->player.steps);
-	render_map(data);	
+	// render_map(data);	
+	camera_player(data);	
 	return (0);
 }
-
-
-	// if (key == 53)
-	// 	printf("ESC\n");

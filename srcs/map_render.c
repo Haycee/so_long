@@ -42,7 +42,7 @@ void	modify_map(t_map *map)
 			random = myrandom();
 			if (map->map[y][x] == '0')
 			{
-				if (random > 170 && random < 230)
+				if (random > 200 && random < 230)
 					map->map[y][x] = '2';
 				else if (random > 230 && random < 250)
 					map->map[y][x] = '3';
@@ -59,15 +59,32 @@ void	select_sprite(t_data *data, int x, int y)
 	if (data->map.map[y][x] == '2')
 		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.grass_2, data->win.x, data->win.y);
 	if (data->map.map[y][x] == '3')
-		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.grass_3, data->win.x, data->win.y);
-	if (data->map.map[y][x] == '4')
-		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.grass_4, data->win.x, data->win.y);
+	{
+		if (data->sprites.state == 0)
+			mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.grass_3, data->win.x, data->win.y);
+		else
+			mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.grass_4, data->win.x, data->win.y);
+	}
+	if (data->map.map[y][x] == '5')
+	{
+		if (data->sprites.state == 0)
+			mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.grass_5, data->win.x, data->win.y);
+		else
+			mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.grass_6, data->win.x, data->win.y);
+	}
 	if (data->map.map[y][x] == '1')
 		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.tree, data->win.x, data->win.y);
 	if (data->map.map[y][x] == 'C')
 		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.collectible, data->win.x, data->win.y);
 	if (data->map.map[y][x] == 'E')
 		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.stone, data->win.x, data->win.y);
+	if (data->map.map[y][x] == 'X')
+	{
+		if (data->sprites.state == 0)
+			mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.enemy, data->win.x, data->win.y);
+		else
+			mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.enemy_2, data->win.x, data->win.y);
+	}
 	if (x == data->player.x && y == data->player.y)
 	{
 		if (!data->player.state)
@@ -112,19 +129,3 @@ void	camera_player(t_data *data)
 	}
 	// printf("\n");
 }
-
-// void	render_map(t_data *data)
-// {
-// 	data->win.y = 0;
-// 	while (data->win.y < data->win.height && data->win.y / 64 < data->map.height) 
-// 	{
-// 		data->win.x = 0;
-// 			while (data->win.x < data->win.width && data->win.y / 64 < data->map.width)
-// 			{
-// 				select_sprite(&data->map, &data->win, &data->sprites, &data->player);
-// 				data->win.x += 64;
-// 			}
-// 		data->win.y += 64;
-// 	}
-// }
-

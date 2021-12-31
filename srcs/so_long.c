@@ -66,10 +66,9 @@ int	main(int argc, char **argv)
 	sprites_ini(&data.sprites, &data.win);
 	sprites_ini_2(&data.sprites, &data.win);
 	player_ini(&data.map, &data.player);
+	camera_player(&data);
 	mlx_loop_hook(data.win.mlx, back_anim, &data);
 	mlx_hook(data.win.window, 2, 0, get_key, &data);
-	// render_map(&data);
-	camera_player(&data);
 	mlx_loop(data.win.mlx);
 }
 

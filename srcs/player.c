@@ -12,12 +12,14 @@
 
 #include "../includes/so_long.h"
 
-void	move_up(t_map *map, t_player *player, t_sprites *sprites, t_win *win)
+int	move_up(t_map *map, t_player *player, t_sprites *sprites, t_win *win)
 {
 	(void)win;
 	(void)sprites;
+	int			is_mooving;
 	static int	frame = 0;
 
+	is_mooving = 1;
 	if (map->map[player->y - 1][player->x] != '1')
 	{
 		player->y--;
@@ -31,17 +33,24 @@ void	move_up(t_map *map, t_player *player, t_sprites *sprites, t_win *win)
 			frame = 0;
 	}
 	else
+	{
+		if (player->state == sprites->up_idle)
+			is_mooving = 0;
 		frame = 0;
+	}
 	if (frame == 0)
-		player->state = sprites->up_idle;		
+		player->state = sprites->up_idle;
+	return (is_mooving);	
 }
 
-void	move_left(t_map *map, t_player *player, t_sprites *sprites, t_win *win)
+int	move_left(t_map *map, t_player *player, t_sprites *sprites, t_win *win)
 {
 	(void)win;
 	(void)sprites;
+	int			is_mooving;
 	static int	frame = 0;
 
+	is_mooving = 1;
 	if (map->map[player->y][player->x - 1] != '1')
 	{
 		player->x--;
@@ -57,18 +66,24 @@ void	move_left(t_map *map, t_player *player, t_sprites *sprites, t_win *win)
 			frame = 0;
 	}
 	else
+	{
+		if (player->state == sprites->left_idle)
+			is_mooving = 0;
 		frame = 0;
+	}
 	if (frame == 0)
 		player->state = sprites->left_idle;		
-
+	return (is_mooving);
 }
 
-void	move_down(t_map *map, t_player *player, t_sprites *sprites, t_win *win)
+int	move_down(t_map *map, t_player *player, t_sprites *sprites, t_win *win)
 {
 	(void)win;
 	(void)sprites;
+	int			is_mooving;
 	static int	frame = 0;
 
+	is_mooving = 1;
 	if (map->map[player->y + 1][player->x] != '1')
 	{
 		player->y++;
@@ -82,17 +97,24 @@ void	move_down(t_map *map, t_player *player, t_sprites *sprites, t_win *win)
 			frame = 0;
 	}
 	else
+	{
+		if (player->state == sprites->down_idle)
+			is_mooving = 0;
 		frame = 0;
+	}
 	if (frame == 0)
-		player->state = sprites->down_idle;		
+		player->state = sprites->down_idle;
+	return (is_mooving);		
 }
 
-void	move_right(t_map *map, t_player *player, t_sprites *sprites, t_win *win)
+int	move_right(t_map *map, t_player *player, t_sprites *sprites, t_win *win)
 {
 	(void)win;
 	(void)sprites;
+	int			is_mooving;
 	static int	frame = 0;
 
+	is_mooving = 1;
 	if (map->map[player->y][player->x + 1] != '1')
 	{
 		player->x++;
@@ -108,8 +130,12 @@ void	move_right(t_map *map, t_player *player, t_sprites *sprites, t_win *win)
 			frame = 0;
 	}
 	else
+	{
+		if (player->state == sprites->right_idle)
+			is_mooving = 0;
 		frame = 0;
+	}
 	if (frame == 0)
 		player->state = sprites->right_idle;		
-		
+	return (is_mooving);
 }

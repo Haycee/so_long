@@ -52,6 +52,7 @@ clean:
 fclean: clean
 	${RM} ${LIBFT_AR}
 	${RM} ${NAME}
+	make -C mlx clean
 
 re: fclean all
 

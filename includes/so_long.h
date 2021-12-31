@@ -27,8 +27,8 @@ typedef struct s_map
 	int		c_num;
 	int		e_num;
 	int		p_num;
-	int		height;
 	int		width;
+	int		height;
 }	t_map;
 
 typedef struct s_win
@@ -44,6 +44,7 @@ typedef struct s_win
 typedef struct s_sprites 
 {
 	int		size;
+	int		state;
 	void	*enemy;
 	void	*enemy_2;	
 	void	*grass;
@@ -76,8 +77,8 @@ typedef struct s_player
 	int		x;
 	int		y;
 	int		steps;
-	int		collected;
 	void	*state;
+	int		collected;
 } t_player;
 
 typedef struct s_camera
@@ -90,46 +91,46 @@ typedef struct s_data
 {
 	t_map		map;
 	t_win		win;
-	t_sprites	sprites;
 	t_player	player;
 	t_camera	camera;
+	t_sprites	sprites;
 } t_data;
 
 
 /* so_long_utils.c */
 
-void	player_ini(t_map *map, t_player *player);
-void	sprites_ini(t_sprites *sprites, t_win *win);
-void	sprites_ini_2(t_sprites *sprites, t_win *win);
+int		myrandom(void);
 int		open_file(char *argv);
 int		close_file(int fd);
+void	player_ini(t_map *map, t_player *player);
 int		check_event(t_map *map, t_player *player);
-int		myrandom(void);
+void	sprites_ini(t_sprites *sprites, t_win *win);
+void	sprites_ini_2(t_sprites *sprites, t_win *win);
 
 /* map_parser.c */
 
-int	parse_map(t_map *map);
-int	check_chars(t_map *map);
-int	check_borders(t_map *map);
-int	is_rectangular(t_map *map);
+int		parse_map(t_map *map);
+int		check_chars(t_map *map);
+int		check_borders(t_map *map);
+int		is_rectangular(t_map *map);
 
 /* map_render.c */
 
+void	modify_map(t_map *map);
 void	create_window(t_win *win, t_map *map);
 void	select_sprite(t_data *data, int x, int y);
 void	camera_player(t_data *data);
-void	modify_map(t_map *map);
 
 /* key.c */
 
-int		get_key(int key, t_data *data);
 int		back_anim(t_data *data);
+int		get_key(int key, t_data *data);
 
 /* player.c */
 
-void	move_up(t_map *map, t_player *player, t_sprites *sprites, t_win *win);
-void	move_left(t_map *map, t_player *player, t_sprites *sprites, t_win *win);
-void	move_down(t_map *map, t_player *player, t_sprites *sprites, t_win *win);
-void	move_right(t_map *map, t_player *player, t_sprites *sprites, t_win *win);
+int		move_up(t_map *map, t_player *player, t_sprites *sprites, t_win *win);
+int		move_left(t_map *map, t_player *player, t_sprites *sprites, t_win *win);
+int		move_down(t_map *map, t_player *player, t_sprites *sprites, t_win *win);
+int		move_right(t_map *map, t_player *player, t_sprites *sprites, t_win *win);
 
 #endif

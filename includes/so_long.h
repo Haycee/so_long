@@ -43,16 +43,32 @@ typedef struct s_win
 
 typedef struct s_sprites 
 {
-	void	*player;
+	int		size;
 	void	*enemy;
+	void	*enemy_2;	
 	void	*grass;
 	void	*grass_2;
 	void	*grass_3;
 	void	*grass_4;
+	void	*grass_5;
+	void	*grass_6;
 	void	*tree;
-	void	*rock;
-	void	*ham;
-	int		size;
+	void	*stone;
+	void	*collectible;
+	void	*left_idle;
+	void	*left_2;
+	void	*left_3;
+	void	*left_4;
+	void	*right_idle;
+	void	*right_2;
+	void	*right_3;
+	void	*right_4;
+	void	*up_idle;
+	void	*up_2;
+	void	*up_3;
+	void	*down_idle;
+	void	*down_2;
+	void	*down_3;
 } t_sprites;
 
 typedef struct s_player 
@@ -61,6 +77,7 @@ typedef struct s_player
 	int		y;
 	int		steps;
 	int		collected;
+	void	*state;
 } t_player;
 
 typedef struct s_camera
@@ -81,11 +98,13 @@ typedef struct s_data
 
 /* so_long_utils.c */
 
+void	player_ini(t_map *map, t_player *player);
 void	sprites_ini(t_sprites *sprites, t_win *win);
+void	sprites_ini_2(t_sprites *sprites, t_win *win);
 int		open_file(char *argv);
 int		close_file(int fd);
 int		check_event(t_map *map, t_player *player);
-int	myrandom(void);
+int		myrandom(void);
 
 /* map_parser.c */
 
@@ -98,14 +117,13 @@ int	is_rectangular(t_map *map);
 
 void	create_window(t_win *win, t_map *map);
 void	select_sprite(t_data *data, int x, int y);
-// void	render_map(t_data *data);
 void	camera_player(t_data *data);
 void	modify_map(t_map *map);
 
 /* key.c */
 
-void	player_ini(t_map *map, t_player *player);
 int		get_key(int key, t_data *data);
+int		back_anim(t_data *data);
 
 /* player.c */
 

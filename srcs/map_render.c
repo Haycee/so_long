@@ -47,7 +47,7 @@ void	modify_map(t_map *map)
 				else if (random > 230 && random < 250)
 					map->map[y][x] = '3';
 				else if (random > 250 && random < 350)
-					map->map[y][x] = '4';
+					map->map[y][x] = '5';
 			}
 		}
 	}
@@ -65,13 +65,16 @@ void	select_sprite(t_data *data, int x, int y)
 	if (data->map.map[y][x] == '1')
 		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.tree, data->win.x, data->win.y);
 	if (data->map.map[y][x] == 'C')
-		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.ham, data->win.x, data->win.y);
+		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.collectible, data->win.x, data->win.y);
 	if (data->map.map[y][x] == 'E')
-		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.rock, data->win.x, data->win.y);
-	if (data->map.map[y][x] == 'X')
-		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.enemy, data->win.x, data->win.y);
+		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.stone, data->win.x, data->win.y);
 	if (x == data->player.x && y == data->player.y)
-		mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.player, data->win.x, data->win.y);
+	{
+		if (!data->player.state)
+			mlx_put_image_to_window(data->win.mlx, data->win.window, data->sprites.down_idle, data->win.x, data->win.y);
+		else
+			mlx_put_image_to_window(data->win.mlx, data->win.window, data->player.state, data->win.x, data->win.y);
+	}
 }
 
 void	camera_player(t_data *data)
@@ -98,16 +101,16 @@ void	camera_player(t_data *data)
 		x = data->camera.x;
 		while (x < (data->win.width / 64) + data->camera.x && data->map.map[y][x])
 		{
-			printf("%c", data->map.map[y][x]);
+			// printf("%c", data->map.map[y][x]);
 			select_sprite(data, x, y);
 			data->win.x += 64;
 			x++;
 		}
-		printf("\n");
+		// printf("\n");
 		data->win.y += 64;
 		y++;
 	}
-	printf("\n");
+	// printf("\n");
 }
 
 // void	render_map(t_data *data)

@@ -3,23 +3,25 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agirardi <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 09:57:24 by agirardi          #+#    #+#              #
-#    Updated: 2021/12/20 12:39:17 by agirardi         ###   ########lyon.fr    #
+#    Updated: 2022/01/01 03:54:48 by alex             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
 
 INCS		=	./includes/so_long.h \
-
-SRCS		=	./srcs/so_long.c \
-				./srcs/so_long_utils.c \
+	
+SRCS		=	./srcs/hook.c \
+				./srcs/player.c \
+				./srcs/so_long.c \
 				./srcs/map_parser.c \
 				./srcs/map_render.c \
-				./srcs/key.c \
-				./srcs/player.c \
+				./srcs/so_long_utils.c \
+				./srcs/initialization.c \
+				./srcs/map_render_utils.c \
 
 LIBFT_AR	=	./libft/libft.a
 

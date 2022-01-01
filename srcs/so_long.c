@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:34 by agirardi          #+#    #+#             */
-/*   Updated: 2021/12/20 17:37:51 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/01 22:01:28 by alex             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,15 @@ int	main(int argc, char **argv)
 		printf("Error\nInvalid map\n");
 		exit(0);
 	}
-	modify_map(&data.map);
 	create_window(&data.win, &data.map);
+	customize_map(&data.map);
 	sprites_ini(&data.sprites, &data.win);
 	sprites_ini_2(&data.sprites, &data.win);
+	sprites_ini_3(&data.sprites, &data.win);
 	player_ini(&data.map, &data.player);
-	camera_player(&data);
-	mlx_loop_hook(data.win.mlx, back_anim, &data);
-	mlx_hook(data.win.window, 2, 0, get_key, &data);
+	render_map(&data);
+	mlx_loop_hook(data.win.mlx, set_animation_state, &data);
+	mlx_hook(data.win.window, 2, 0, key_press, &data);
+	// mlx_hook(data.win.window, 3, 0, key_release, &data);
 	mlx_loop(data.win.mlx);
 }
-
-
-
-// int	close(int keycode, t_vars *vars)
-// {
-// 	mlx_destroy_window(vars->mlx, vars->win);
-// }

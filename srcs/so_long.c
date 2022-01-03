@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:34 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 09:02:11 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 11:59:15 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ int	main(int argc, char **argv)
 	render_map(&data);
 	mlx_loop_hook(data.win.mlx, set_animation_state, &data);
 	mlx_hook(data.win.window, 2, 0, key_press, &data);
-	// mlx_hook(data.win.window, 3, 0, key_release, &data);
+	mlx_hook(data.win.window, 3, 0, key_release, &data);
 	mlx_hook(data.win.window, 17, 0, close_window, &data);
 	mlx_loop(data.win.mlx);
 }
 
-// creer sprite.c
+// Afficher steps
+// Afficher win / loose
 // X pour ennemis
 // Limiter nombre exit ?

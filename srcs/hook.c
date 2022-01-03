@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 13:05:32 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 09:04:09 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 11:53:27 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ int	close_window(t_data *data)
 	exit(1);
 }
 
-// int	key_release(int key, t_data *data)
-// {
+int	key_release(int key, t_data *data)
+{
 
-// 	if (key == 13)
-// 		data->player.sprite = data->sprites.up_idle;
-// 	if (key == 0)
-// 		data->player.sprite = data->sprites.left_idle;
-// 	if (key == 1)
-// 		data->player.sprite = data->sprites.down_idle;
-// 	if (key == 2)
-// 		data->player.sprite = data->sprites.right_idle;
+	if (key == 13)
+		data->player.sprite = data->sprites.up_idle;
+	if (key == 0)
+		data->player.sprite = data->sprites.left_idle;
+	if (key == 1)
+		data->player.sprite = data->sprites.down_idle;
+	if (key == 2)
+		data->player.sprite = data->sprites.right_idle;
 		
-// 	display_player(data, data->player.x, data->player.y);
-// 	return (0);
-// }
+	display_player(data, data->player.x, data->player.y);
+	return (0);
+}

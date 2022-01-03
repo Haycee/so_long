@@ -65,4 +65,5 @@ void	render_map(t_data *data)
 		data->win.y += 64;
 		data->map.y++;
 	}
+	mlx_string_put(data->win.mlx, data->win.window, 32, 32, 0x000000FF, "test");
 }

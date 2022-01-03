@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:39 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/01 22:05:28 by alex             ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 06:26:46 by alex             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@
 typedef struct s_map
 {
 	char	**map;
-	int		c_num;
-	int		e_num;
-	int		p_num;
-	int		width;
+	int		exit_count;
+	int		player_count;
+	int		rupee_count;
 	int		height;
+	int		width;
+	int		x;
+	int		y;
 }	t_map;
 
 typedef struct s_win
@@ -52,6 +54,12 @@ typedef struct s_sprites
 	void	*enemy;
 	void	*enemy_2;	
 	void	*exit;
+	void	*fall;
+	void	*fall_2;
+	void	*fall_3;
+	void	*fall_4;
+	void	*fall_5;
+	void	*fall_6;
 	void	*grass;
 	void	*grass_2;
 	void	*grass_3;
@@ -69,6 +77,7 @@ typedef struct s_sprites
 	void	*right_3;
 	void	*right_4;
 	void	*stone;
+	void	*sword;
 	void	*up_idle;
 	void	*up_2;
 	void	*up_3;
@@ -76,9 +85,11 @@ typedef struct s_sprites
 
 typedef struct s_player 
 {
+	void	*sprite;
+	char	orientation;
+	int		frame;
 	int		is_mooving;
 	int		rupees;
-	void	*sprite;
 	int		steps;
 	int		x;
 	int		y;
@@ -102,7 +113,9 @@ typedef struct s_data
 
 /* so_long_utils.c */
 
-int		close_file(int fd);
+void	close_file(int fd);
+void	error_handler(int error_num);
+void	initialize_all(t_data *data);
 int		open_file(char *argv);
 int		randomize(void);
 
@@ -118,10 +131,10 @@ void	sprites_ini_3(t_sprites *sprites, t_win *win);
 
 /* map_parser.c */
 
+void	parse_map(t_map *map);
 int		check_borders(t_map *map);
 int		check_chars(t_map *map);
 int		is_rectangular(t_map *map);
-int		parse_map(t_map *map);
 
 
 /* map_render.c */
@@ -141,6 +154,8 @@ void	select_sprite_2(t_data *data, int x, int y);
 
 /* hook.c */
 
+int		check_player_state(t_data *data);
+int		close_window(t_data *data);
 int		key_press(int key, t_data *data);
 int		key_release(int key, t_data *data);
 int		set_animation_state(t_data *data);
@@ -148,6 +163,8 @@ int		set_animation_state(t_data *data);
 
 /* player.c */
 
+void	event_listener(t_data *data);
+void	idle_player(t_data *data);
 void	move_down(t_map *map, t_player *player, t_sprites *sprites);
 void	move_left(t_map *map, t_player *player, t_sprites *sprites);
 void	move_right(t_map *map, t_player *player, t_sprites *sprite);

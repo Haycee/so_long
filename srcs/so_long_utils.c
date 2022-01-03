@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 10:20:19 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/01 21:27:53 by alex             ###   ########lyon.fr   */
+/*   Updated: 2022/01/02 02:53:20 by alex             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,20 @@ int	open_file(char *argv)
 	
 	fd = open(argv, O_DIRECTORY);
 		if (fd != -1)
-			return (-1);
+			error_handler(2);
 	fd = open(argv, O_RDONLY);
 		if (fd < 0)
 			return (-1);
 	return (fd);
 }
 
-int	randomize(void) // check error
+void	close_file(int fd)
+{
+	if (close(fd) == -1)
+		error_handler(2);
+}
+
+int	randomize(void)
 {
 	int		result;
 	int		fd;
@@ -33,21 +39,36 @@ int	randomize(void) // check error
 	int		i;
 
 	fd = open("/dev/urandom", O_RDONLY);
+	if (fd < 0)
+		error_handler(2);
 	read(fd, buffer, sizeof(char) * 3);
 	buffer[4] = '\0';
 	i = -1;
 	result = 0;
 	while (buffer[++i])
 		result += buffer[i];
-	close(fd);
+	if (close(fd) == -1)
+		error_handler(2);
 	if (result < 0)
 		result *= -1;
 	return (result);
 }
 
-int	close_file(int fd) // check error
+void	initialize_all(t_data *data)
 {
-	if (close(fd) == -1)
-		return (-1);
-	return (1);
+	sprites_ini(&data->sprites, &data->win);
+	sprites_ini_2(&data->sprites, &data->win);
+	sprites_ini_3(&data->sprites, &data->win);
+	player_ini(&data->map, &data->player);
+}
+
+void	error_handler(int error_num)
+{
+	if (error_num == 1)
+		printf("Error\nInvalid path\n");
+	if (error_num == 2)
+		printf("Error\nSomething went wrong while creating the map\n");
+	if (error_num == 3)
+		printf("Error\nInvalid map\n");
+	exit(1);
 }

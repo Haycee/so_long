@@ -11,7 +11,7 @@ void	player_ini(t_map *map, t_player *player)
 	while (map->map[++y])
 	{
 		x = -1;
-		while(map->map[++x])
+		while(map->map[y][++x])
 		{
 			if (map->map[y][x] == 'P')
 			{
@@ -38,6 +38,22 @@ void	sprites_ini(t_sprites *sprites, t_win *win)
 		&sprites->size, &sprites->size);
 	sprites->exit = mlx_xpm_file_to_image(win->mlx, "./sprites/floor/exit.xpm",
 		&sprites->size, &sprites->size);
+	sprites->fall = mlx_xpm_file_to_image(win->mlx, "./sprites/fall/fall.xpm",
+		&sprites->size, &sprites->size);
+	sprites->fall_2 = mlx_xpm_file_to_image(win->mlx, "./sprites/fall/fall_2.xpm",
+		&sprites->size, &sprites->size);	
+	sprites->fall_3 = mlx_xpm_file_to_image(win->mlx, "./sprites/fall/fall_3.xpm",
+		&sprites->size, &sprites->size);
+	sprites->fall_4 = mlx_xpm_file_to_image(win->mlx, "./sprites/fall/fall_4.xpm",
+		&sprites->size, &sprites->size);
+	sprites->fall_5 = mlx_xpm_file_to_image(win->mlx, "./sprites/fall/fall_5.xpm",
+		&sprites->size, &sprites->size);
+}
+
+void	sprites_ini_2(t_sprites *sprites, t_win *win)
+{
+	sprites->fall_6 = mlx_xpm_file_to_image(win->mlx, "./sprites/fall/fall_6.xpm",
+		&sprites->size, &sprites->size);
 	sprites->grass = mlx_xpm_file_to_image(win->mlx, "./sprites/floor/grass.xpm",
 		&sprites->size, &sprites->size);
 	sprites->grass_2 = mlx_xpm_file_to_image(win->mlx, "./sprites/floor/grass_2.xpm",
@@ -48,10 +64,6 @@ void	sprites_ini(t_sprites *sprites, t_win *win)
 		&sprites->size, &sprites->size);
 	sprites->grass_5 = mlx_xpm_file_to_image(win->mlx, "./sprites/floor/grass_5.xpm",
 		&sprites->size, &sprites->size);
-}
-
-void	sprites_ini_2(t_sprites *sprites, t_win *win)
-{
 	sprites->grass_6 = mlx_xpm_file_to_image(win->mlx, "./sprites/floor/grass_6.xpm",
 		&sprites->size, &sprites->size);	
 	sprites->leaf = mlx_xpm_file_to_image(win->mlx, "./sprites/floor/leaf.xpm",
@@ -64,6 +76,10 @@ void	sprites_ini_2(t_sprites *sprites, t_win *win)
 		&sprites->size, &sprites->size);
 	sprites->left_4 = mlx_xpm_file_to_image(win->mlx, "./sprites/left/left_4.xpm",
 		&sprites->size, &sprites->size);
+}
+
+void	sprites_ini_3(t_sprites *sprites, t_win *win)
+{
 	sprites->plant = mlx_xpm_file_to_image(win->mlx, "./sprites/wall/plant.xpm",
 		&sprites->size, &sprites->size);
 	sprites->right_idle = mlx_xpm_file_to_image(win->mlx, "./sprites/right/right_idle.xpm",
@@ -76,10 +92,8 @@ void	sprites_ini_2(t_sprites *sprites, t_win *win)
 		&sprites->size, &sprites->size);
 	sprites->stone = mlx_xpm_file_to_image(win->mlx, "./sprites/wall/stone.xpm",
 		&sprites->size, &sprites->size);
-}
-
-void	sprites_ini_3(t_sprites *sprites, t_win *win)
-{
+	sprites->sword = mlx_xpm_file_to_image(win->mlx, "./sprites/floor/sword.xpm",
+		&sprites->size, &sprites->size);
 	sprites->up_idle = mlx_xpm_file_to_image(win->mlx, "./sprites/up/up_idle.xpm",
 		&sprites->size, &sprites->size);
 	sprites->up_2 = mlx_xpm_file_to_image(win->mlx, "./sprites/up/up_2.xpm",

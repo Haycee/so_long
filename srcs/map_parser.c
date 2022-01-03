@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:25:21 by agirardi          #+#    #+#             */
-/*   Updated: 2021/12/20 14:52:15 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/02 02:48:33 by alex             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	parse_map(t_map *map)
+void	parse_map(t_map *map)
 {
 	if (!is_rectangular(map) || !check_chars(map) || !check_borders(map))
-		return 0;
-	return (1);
+		error_handler(3);
 }
 
 int	is_rectangular(t_map *map)
@@ -44,14 +43,14 @@ int	check_chars(t_map *map)
 			if (!ft_strchr("01CEPX", map->map[y][x]))
 				return (0);
 			if (map->map[y][x] == 'C')
-				map->c_num++;
+				map->rupee_count++;
 			if (map->map[y][x] == 'E')
-				map->e_num++;
+				map->exit_count++;
 			if (map->map[y][x] == 'P')
-				map->p_num++;
+				map->player_count++;
 		}
 	}
-	if (map->c_num < 1 || map->e_num < 1 || map->p_num < 1)
+	if (map->rupee_count < 1 || map->exit_count < 1 || map->player_count < 1) // player_count max 1 ?
 		return (0);
 	return (1);
 }

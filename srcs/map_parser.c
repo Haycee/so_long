@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:25:21 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/02 02:48:33 by alex             ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 10:57:45 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	check_chars(t_map *map)
 				map->player_count++;
 		}
 	}
-	if (map->rupee_count < 1 || map->exit_count < 1 || map->player_count < 1) // player_count max 1 ?
+	if (map->rupee_count < 1 || map->exit_count < 1
+		|| map->player_count < 1) // player_count && exit_count max 1 ?
 		return (0);
 	return (1);
 }
@@ -69,7 +70,7 @@ int	check_borders(t_map *map)
 			while (map->map[y][++x])
 			{
 				if (map->map[y][x] != 49)
-					return (0); 
+					return (0);
 			}
 		}
 		if (map->map[y][0] != '1' || map->map[y][map->width - 1] != '1')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 10:20:19 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/02 02:53:20 by alex             ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 09:16:45 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int	open_file(char *argv)
 {
 	int	fd;
-	
+
 	fd = open(argv, O_DIRECTORY);
-		if (fd != -1)
-			error_handler(2);
+	if (fd != -1)
+		error_handler(2);
 	fd = open(argv, O_RDONLY);
-		if (fd < 0)
-			return (-1);
+	if (fd < 0)
+		return (-1);
 	return (fd);
 }
 

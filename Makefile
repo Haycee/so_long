@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+         #
+#    By: agirardi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 09:57:24 by agirardi          #+#    #+#              #
-#    Updated: 2022/01/01 03:54:48 by alex             ###   ########lyon.fr    #
+#    Updated: 2022/01/03 10:37:50 by agirardi         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS		=	./srcs/hook.c \
 				./srcs/so_long.c \
 				./srcs/map_parser.c \
 				./srcs/map_render.c \
+				./srcs/player_event.c\
 				./srcs/so_long_utils.c \
 				./srcs/initialization.c \
 				./srcs/map_render_utils.c \

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:39 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 06:26:46 by alex             ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 10:33:50 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "../libft/libft.h"
-#include "../mlx/mlx.h"
+# include "../libft/libft.h"
+# include "../mlx/mlx.h"
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -41,9 +41,9 @@ typedef struct s_win
 	int		height;
 	int		x;
 	int		y;
-} t_win;
+}	t_win;
 
-typedef struct s_sprites 
+typedef struct s_sprites
 {
 	int		size;
 	int		state;
@@ -81,9 +81,9 @@ typedef struct s_sprites
 	void	*up_idle;
 	void	*up_2;
 	void	*up_3;
-} t_sprites;
+}	t_sprites;
 
-typedef struct s_player 
+typedef struct s_player
 {
 	void	*sprite;
 	char	orientation;
@@ -93,13 +93,13 @@ typedef struct s_player
 	int		steps;
 	int		x;
 	int		y;
-} t_player;
+}	t_player;
 
 typedef struct s_camera
 {
 	int		x;
 	int		y;
-} t_camera;
+}	t_camera;
 
 typedef struct s_data
 {
@@ -108,7 +108,7 @@ typedef struct s_data
 	t_player	player;
 	t_sprites	sprites;
 	t_win		win;
-} t_data;
+}	t_data;
 
 
 /* so_long_utils.c */
@@ -147,9 +147,10 @@ void	render_map(t_data *data);
 /* map_render_utils.c */
 
 void	change_char(t_map *map, int x, int y);
-void    display_player(t_data *data, int x, int y);
+void	display_player(t_data *data, int x, int y);
 void	select_sprite(t_data *data, int x, int y);
 void	select_sprite_2(t_data *data, int x, int y);
+void	select_sprite_3(t_data *data, int x, int y);
 
 
 /* hook.c */
@@ -163,11 +164,15 @@ int		set_animation_state(t_data *data);
 
 /* player.c */
 
-void	event_listener(t_data *data);
 void	idle_player(t_data *data);
 void	move_down(t_map *map, t_player *player, t_sprites *sprites);
 void	move_left(t_map *map, t_player *player, t_sprites *sprites);
 void	move_right(t_map *map, t_player *player, t_sprites *sprite);
 void	move_up(t_map *map, t_player *player, t_sprites *sprites);
+
+
+/* player_event.c */
+
+void	event_listener(t_data *data);
 
 #endif

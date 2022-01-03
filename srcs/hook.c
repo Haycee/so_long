@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 13:05:32 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 06:16:53 by alex             ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 09:04:09 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,14 @@ int	key_press(int key, t_data *data)
 	if (data->player.is_mooving)
 	{
 		event_listener(data);
-		render_map(data);	
+		render_map(data);
 	}
 	return (0);
 }
 
-int set_animation_state(t_data *data)
+int	set_animation_state(t_data *data)
 {
 	static int	counter_anim = 0;
-
 	int			x;
 	int			y;
 
@@ -54,12 +53,12 @@ int set_animation_state(t_data *data)
 	return (0);
 }
 
-int		close_window(t_data *data)
+int	close_window(t_data *data)
 {
-		mlx_destroy_window(data->win.mlx, data->win.window);
-		exit(1);
+	mlx_destroy_window(data->win.mlx, data->win.window);
+	exit(1);
 }
-		
+
 // int	key_release(int key, t_data *data)
 // {
 

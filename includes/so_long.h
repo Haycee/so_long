@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:39 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 10:33:50 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 23:03:55 by alex             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,16 +141,17 @@ int		is_rectangular(t_map *map);
 
 void	create_window(t_win *win, t_map *map);
 void	customize_map(t_map *map);
+void	display_player(t_data *data, int x, int y);
 void	render_map(t_data *data);
 
 
 /* map_render_utils.c */
 
 void	change_char(t_map *map, int x, int y);
-void	display_player(t_data *data, int x, int y);
-void	select_sprite(t_data *data, int x, int y);
+void	select_sprite(t_data *data);
 void	select_sprite_2(t_data *data, int x, int y);
 void	select_sprite_3(t_data *data, int x, int y);
+void	select_sprite_4(t_data *data, int x, int y);
 
 
 /* hook.c */

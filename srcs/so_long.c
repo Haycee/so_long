@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:34 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 11:59:15 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 23:16:51 by alex             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	main(int argc, char **argv)
 	mlx_loop(data.win.mlx);
 }
 
-// Afficher steps
 // Afficher win / loose
 // X pour ennemis
 // Limiter nombre exit ?

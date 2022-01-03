@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 13:05:32 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 11:53:27 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 23:12:19 by alex             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	key_press(int key, t_data *data)
 {
+	data->player.is_mooving = 1;
 	if (key == 13)
 		move_up(&data->map, &data->player, &data->sprites);
 	if (key == 0)
@@ -61,7 +62,7 @@ int	close_window(t_data *data)
 
 int	key_release(int key, t_data *data)
 {
-
+	data->player.frame = 0;
 	if (key == 13)
 		data->player.sprite = data->sprites.up_idle;
 	if (key == 0)
@@ -70,7 +71,6 @@ int	key_release(int key, t_data *data)
 		data->player.sprite = data->sprites.down_idle;
 	if (key == 2)
 		data->player.sprite = data->sprites.right_idle;
-		
 	display_player(data, data->player.x, data->player.y);
 	return (0);
 }

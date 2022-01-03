@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_render_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 09:14:22 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 09:33:23 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 23:15:54 by alex             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,20 @@ void	change_char(t_map *map, int x, int y)
 			map->map[y][x] = 'S';
 }
 
-void	select_sprite(t_data *data, int x, int y)
+void	select_sprite(t_data *data)
 {
 	mlx_put_image_to_window(data->win.mlx, data->win.window,
 		data->sprites.grass, data->win.x, data->win.y);
+	if (ft_strchr("0127CP", data->map.map[data->map.y][data->map.x]))
+		select_sprite_2(data, data->map.x, data->map.y);
+	else if ((ft_strchr("8SXE", data->map.map[data->map.y][data->map.x])))
+		select_sprite_3(data, data->map.x, data->map.y);
+	else
+		select_sprite_4(data, data->map.x, data->map.y);
+}
+
+void	select_sprite_2(t_data *data, int x, int y)
+{
 	if (data->map.map[y][x] == '1')
 		mlx_put_image_to_window(data->win.mlx, data->win.window,
 			data->sprites.plant, data->win.x, data->win.y);
@@ -57,10 +67,8 @@ void	select_sprite(t_data *data, int x, int y)
 			data->sprites.rupee, data->win.x, data->win.y);
 }
 
-void	select_sprite_2(t_data *data, int x, int y)
+void	select_sprite_3(t_data *data, int x, int y)
 {
-	mlx_put_image_to_window(data->win.mlx, data->win.window,
-		data->sprites.grass, data->win.x, data->win.y);
 	if (data->map.map[y][x] == '8')
 		mlx_put_image_to_window(data->win.mlx, data->win.window,
 			data->sprites.sword, data->win.x, data->win.y);
@@ -81,10 +89,8 @@ void	select_sprite_2(t_data *data, int x, int y)
 			data->sprites.exit, data->win.x, data->win.y);
 }
 
-void	select_sprite_3(t_data *data, int x, int y)
+void	select_sprite_4(t_data *data, int x, int y)
 {
-	mlx_put_image_to_window(data->win.mlx, data->win.window,
-		data->sprites.grass, data->win.x, data->win.y);
 	if (data->map.map[y][x] == '3' || data->map.map[y][x] == '4')
 	{
 		if (data->sprites.state == 0)
@@ -102,18 +108,5 @@ void	select_sprite_3(t_data *data, int x, int y)
 		else
 			mlx_put_image_to_window(data->win.mlx, data->win.window,
 				data->sprites.grass_6, data->win.x, data->win.y);
-	}
-}
-
-void	display_player(t_data *data, int x, int y)
-{	
-	if (x == data->player.x && y == data->player.y)
-	{
-		if (!data->player.steps)
-			mlx_put_image_to_window(data->win.mlx, data->win.window,
-				data->sprites.down_idle, data->win.x, data->win.y);
-		else
-			mlx_put_image_to_window(data->win.mlx, data->win.window,
-				data->player.sprite, data->win.x, data->win.y);
 	}
 }

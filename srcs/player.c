@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 11:45:18 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 10:34:35 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 23:08:33 by alex             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	move_up(t_map *map, t_player *player, t_sprites *sprites)
 	if (player->orientation != 'u' || player->is_mooving == 0)
 		player->frame = 0;
 	player->orientation = 'u';
-	player->is_mooving = 1;
 	if (!ft_strchr("1S", map->map[player->y - 1][player->x]))
 	{
 		player->y--;
@@ -45,7 +44,6 @@ void	move_left(t_map *map, t_player *player, t_sprites *sprites)
 	if (player->orientation != 'l' || player->is_mooving == 0)
 		player->frame = 0;
 	player->orientation = 'l';
-	player->is_mooving = 1;
 	if (!ft_strchr("1S", map->map[player->y][player->x - 1]))
 	{
 		player->x--;
@@ -75,7 +73,6 @@ void	move_down(t_map *map, t_player *player, t_sprites *sprites)
 	if (player->orientation != 'd' || player->is_mooving == 0)
 		player->frame = 0;
 	player->orientation = 'd';
-	player->is_mooving = 1;
 	if (!ft_strchr("1S", map->map[player->y + 1][player->x]))
 	{
 		player->y++;
@@ -103,7 +100,6 @@ void	move_right(t_map *map, t_player *player, t_sprites *sprites)
 	if (player->orientation != 'r' || player->is_mooving == 0)
 		player->frame = 0;
 	player->orientation = 'r';
-	player->is_mooving = 1;
 	if (!ft_strchr("1S", map->map[player->y][player->x + 1]))
 	{
 		player->x++;
@@ -128,7 +124,7 @@ void	move_right(t_map *map, t_player *player, t_sprites *sprites)
 		player->sprite = sprites->right_idle;
 }
 
-void	idle_player(t_data *data) // ?
+void	idle_player(t_data *data)
 {
 	data->player.is_mooving = 0;
 	if (data->player.orientation == 'u')

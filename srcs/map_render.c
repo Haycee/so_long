@@ -57,8 +57,11 @@ void	display_hud(t_data *data)
 	int		offset_steps;
 	int		offset_rupees;
 
-	rupee_sentence = malloc(sizeof(char) * (ft_strlen(ft_itoa(data->player.rupees)) + 1 + ft_strlen(ft_itoa(data->map.rupee_count))));
-	rupee_sentence = ft_strjoin(ft_strjoin(ft_itoa(data->player.rupees), "/"),  ft_itoa(data->map.rupee_count));
+	rupee_sentence = malloc(sizeof(char) * 
+		(ft_strlen(ft_itoa(data->player.rupees)) + 1 +
+			ft_strlen(ft_itoa(data->map.rupee_count))));
+	rupee_sentence = ft_strjoin(ft_strjoin(ft_itoa(data->player.rupees), "/"),
+		ft_itoa(data->map.rupee_count));
 	
 	
 	offset_steps = ft_strlen(ft_itoa(data->player.steps));
@@ -70,8 +73,8 @@ void	display_hud(t_data *data)
 		data->sprites.purse, 99, 24);
 	mlx_string_put(data->win.mlx, data->win.window, 75 - (offset_steps * 3), 83,
 		0xFFFFFFFF, ft_itoa(data->player.steps));
-	mlx_string_put(data->win.mlx, data->win.window, 128 - (offset_rupees * 3), 83,
-		0xFFFFFFFF, rupee_sentence);
+	mlx_string_put(data->win.mlx, data->win.window, 128 - (offset_rupees * 3),
+	83, 0xFFFFFFFF, rupee_sentence);
 	free(rupee_sentence);
 }
 

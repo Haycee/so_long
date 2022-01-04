@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:39 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 23:03:55 by alex             ###   ########lyon.fr   */
+/*   Updated: 2022/01/04 07:11:29 by alex             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_sprites
 	int		size;
 	int		state;
 	void	*rupee;
+	void	*purse;
 	void	*down_idle;
 	void	*down_2;
 	void	*down_3;
@@ -76,6 +77,7 @@ typedef struct s_sprites
 	void	*right_2;
 	void	*right_3;
 	void	*right_4;
+	void	*shoe;
 	void	*stone;
 	void	*sword;
 	void	*up_idle;
@@ -153,7 +155,6 @@ void	select_sprite_2(t_data *data, int x, int y);
 void	select_sprite_3(t_data *data, int x, int y);
 void	select_sprite_4(t_data *data, int x, int y);
 
-
 /* hook.c */
 
 int		check_player_state(t_data *data);
@@ -170,7 +171,6 @@ void	move_down(t_map *map, t_player *player, t_sprites *sprites);
 void	move_left(t_map *map, t_player *player, t_sprites *sprites);
 void	move_right(t_map *map, t_player *player, t_sprites *sprite);
 void	move_up(t_map *map, t_player *player, t_sprites *sprites);
-
 
 /* player_event.c */
 

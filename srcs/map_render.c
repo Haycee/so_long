@@ -57,13 +57,9 @@ void	display_hud(t_data *data)
 	int		offset_steps;
 	int		offset_rupees;
 
-	rupee_sentence = malloc(sizeof(char) * 
-		(ft_strlen(ft_itoa(data->player.rupees)) + 1 +
-			ft_strlen(ft_itoa(data->map.rupee_count))));
 	rupee_sentence = ft_strjoin(ft_strjoin(ft_itoa(data->player.rupees), "/"),
 		ft_itoa(data->map.rupee_count));
-	
-	
+			
 	offset_steps = ft_strlen(ft_itoa(data->player.steps));
 	offset_rupees = ft_strlen(rupee_sentence);
 

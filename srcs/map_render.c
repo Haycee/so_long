@@ -53,26 +53,26 @@ void	display_player(t_data *data, int x, int y)
 
 void	display_hud(t_data *data)
 {
-	int	offset_shoe;
-	int	offset_purse;
+	char 	*rupee_sentence;
+	int		offset_steps;
+	int		offset_rupees;
 
-	offset_shoe = ft_strlen(ft_itoa(data->player.steps));
-	offset_purse = ft_strlen(ft_itoa(data->player.rupees));
-	if (offset_shoe != 0)
-		offset_shoe -= 1;
-	if (offset_purse != 0)
-		offset_purse -= 1;
+	rupee_sentence = malloc(sizeof(char) * (ft_strlen(ft_itoa(data->player.rupees)) + 1 + ft_strlen(ft_itoa(data->map.rupee_count))));
+	rupee_sentence = ft_strjoin(ft_strjoin(ft_itoa(data->player.rupees), "/"),  ft_itoa(data->map.rupee_count));
+	
+	
+	offset_steps = ft_strlen(ft_itoa(data->player.steps));
+	offset_rupees = ft_strlen(rupee_sentence);
 
-	printf("offset_shoe : %d\n", offset_shoe);
-	printf("offset_purse : %d\n", offset_purse);
 	mlx_put_image_to_window(data->win.mlx, data->win.window,
 		data->sprites.shoe, 44, 24);
 	mlx_put_image_to_window(data->win.mlx, data->win.window,
-		data->sprites.purse, 98, 24);
-	mlx_string_put(data->win.mlx, data->win.window, 71 - (offset_shoe * 3), 85,
+		data->sprites.purse, 99, 24);
+	mlx_string_put(data->win.mlx, data->win.window, 75 - (offset_steps * 3), 83,
 		0xFFFFFFFF, ft_itoa(data->player.steps));
-	mlx_string_put(data->win.mlx, data->win.window, 126 - (offset_purse * 3), 85,
-		0xFFFFFFFF, ft_itoa(data->player.rupees));
+	mlx_string_put(data->win.mlx, data->win.window, 128 - (offset_rupees * 3), 83,
+		0xFFFFFFFF, rupee_sentence);
+	free(rupee_sentence);
 }
 
 void	render_map(t_data *data)

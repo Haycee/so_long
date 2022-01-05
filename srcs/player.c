@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 11:45:18 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 23:08:33 by alex             ###   ########lyon.fr   */
+/*   Updated: 2022/01/04 14:57:32 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	move_up(t_map *map, t_player *player, t_sprites *sprites)
 		player->frame++;
 		if (player->frame == 1)
 			player->sprite = sprites->up_2;
-		if (player->frame == 2)
+		else if (player->frame == 2)
 			player->sprite = sprites->up_3;
-		if (player->frame == 3)
+		else if (player->frame == 3)
 			player->frame = 0;
 	}
 	else
@@ -51,11 +51,11 @@ void	move_left(t_map *map, t_player *player, t_sprites *sprites)
 		player->frame++;
 		if (player->frame == 1)
 			player->sprite = sprites->left_2;
-		if (player->frame == 2)
+		else if (player->frame == 2)
 			player->sprite = sprites->left_3;
-		if (player->frame == 3)
+		else if (player->frame == 3)
 			player->sprite = sprites->left_4;
-		if (player->frame == 4)
+		else if (player->frame == 4)
 			player->frame = 0;
 	}
 	else
@@ -80,9 +80,9 @@ void	move_down(t_map *map, t_player *player, t_sprites *sprites)
 		player->frame++;
 		if (player->frame == 1)
 			player->sprite = sprites->down_2;
-		if (player->frame == 2)
+		else if (player->frame == 2)
 			player->sprite = sprites->down_3;
-		if (player->frame == 3)
+		else if (player->frame == 3)
 			player->frame = 0;
 	}
 	else
@@ -107,11 +107,11 @@ void	move_right(t_map *map, t_player *player, t_sprites *sprites)
 		player->frame++;
 		if (player->frame == 1)
 			player->sprite = sprites->right_2;
-		if (player->frame == 2)
+		else if (player->frame == 2)
 			player->sprite = sprites->right_3;
-		if (player->frame == 3)
+		else if (player->frame == 3)
 			player->sprite = sprites->right_4;
-		if (player->frame == 4)
+		else if (player->frame == 4)
 			player->frame = 0;
 	}
 	else
@@ -129,11 +129,11 @@ void	idle_player(t_data *data)
 	data->player.is_mooving = 0;
 	if (data->player.orientation == 'u')
 		data->player.sprite = data->sprites.up_idle;
-	if (data->player.orientation == 'l')
+	else if (data->player.orientation == 'l')
 		data->player.sprite = data->sprites.left_idle;
-	if (data->player.orientation == 'd')
+	else if (data->player.orientation == 'd')
 		data->player.sprite = data->sprites.down_idle;
-	if (data->player.orientation == 'r')
+	else if (data->player.orientation == 'r')
 		data->player.sprite = data->sprites.right_idle;
-	display_player(data, data->player.x, data->player.y);
+	display_player(data);
 }

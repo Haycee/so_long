@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_render_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 09:14:22 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/04 07:11:38 by alex             ###   ########lyon.fr   */
+/*   Updated: 2022/01/04 16:57:54 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	select_sprite_3(t_data *data, int x, int y)
 
 void	select_sprite_4(t_data *data, int x, int y)
 {
-	if (data->map.map[y][x] == '3' || data->map.map[y][x] == '4')
+	if (data->map.map[y][x] == '3')
 	{
 		if (data->sprites.state == 0)
 			mlx_put_image_to_window(data->win.mlx, data->win.window,
@@ -100,7 +100,7 @@ void	select_sprite_4(t_data *data, int x, int y)
 			mlx_put_image_to_window(data->win.mlx, data->win.window,
 				data->sprites.grass_4, data->win.x, data->win.y);
 	}
-	if (data->map.map[y][x] == '5' || data->map.map[y][x] == '6')
+	if (data->map.map[y][x] == '5')
 	{
 		if (data->sprites.state == 0)
 			mlx_put_image_to_window(data->win.mlx, data->win.window,

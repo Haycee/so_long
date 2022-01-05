@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:34 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/04 05:14:01 by alex             ###   ########lyon.fr   */
+/*   Updated: 2022/01/04 14:21:35 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@ int	main(int argc, char **argv)
 	create_window(&data.win, &data.map);
 	customize_map(&data.map);
 	initialize_all(&data);
-	render_map(&data);
-	mlx_loop_hook(data.win.mlx, set_animation_state, &data);
+	if (!data.map.end)
+	{
+		render_map(&data);
+		mlx_loop_hook(data.win.mlx, set_animation_state, &data);
+	}
 	mlx_hook(data.win.window, 2, 0, key_press, &data);
 	mlx_hook(data.win.window, 3, 0, key_release, &data);
 	mlx_hook(data.win.window, 17, 0, close_window, &data);
@@ -61,4 +64,4 @@ int	main(int argc, char **argv)
 
 // Afficher win / loose
 // X pour ennemis
-// Limiter nombre exit ?as
+// Limiter nombre exit ?

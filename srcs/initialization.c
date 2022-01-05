@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 09:05:30 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/04 06:25:51 by alex             ###   ########lyon.fr   */
+/*   Updated: 2022/01/04 15:56:01 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	sprites_ini_3(t_sprites *sprites, t_win *win)
 	sprites->right_4 = mlx_xpm_file_to_image(win->mlx,
 			"./sprites/link/right/right_4.xpm", &sprites->size, &sprites->size);
 	sprites->shoe = mlx_xpm_file_to_image(win->mlx,
-			"./sprites/ico/shoe.xpm", &sprites->size, &sprites->size);
+			"./sprites/hud/shoe.xpm", &sprites->size, &sprites->size);
 	sprites->stone = mlx_xpm_file_to_image(win->mlx,
 			"./sprites/wall/stone.xpm", &sprites->size, &sprites->size);
 	sprites->sword = mlx_xpm_file_to_image(win->mlx,
@@ -113,7 +113,7 @@ void	sprites_ini_3(t_sprites *sprites, t_win *win)
 	sprites->up_3 = mlx_xpm_file_to_image(win->mlx,
 			"./sprites/link/up/up_3.xpm", &sprites->size, &sprites->size);
 	sprites->purse = mlx_xpm_file_to_image(win->mlx,
-			"./sprites/ico/purse.xpm", &sprites->size, &sprites->size);
+			"./sprites/hud/purse.xpm", &sprites->size, &sprites->size);
 }
 
 void	camera_ini(t_data *data)

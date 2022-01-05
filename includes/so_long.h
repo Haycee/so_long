@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42lyon.fr>              +#+  +:+       +#+        */
+/*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:39 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/04 07:11:29 by alex             ###   ########lyon.fr   */
+/*   Updated: 2022/01/04 14:57:10 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 typedef struct s_map
 {
 	char	**map;
+	int		end;
 	int		exit_count;
 	int		player_count;
 	int		rupee_count;
@@ -90,6 +91,7 @@ typedef struct s_player
 	void	*sprite;
 	char	orientation;
 	int		frame;
+	int		frame_fall;
 	int		is_mooving;
 	int		rupees;
 	int		steps;
@@ -143,7 +145,7 @@ int		is_rectangular(t_map *map);
 
 void	create_window(t_win *win, t_map *map);
 void	customize_map(t_map *map);
-void	display_player(t_data *data, int x, int y);
+void	display_player(t_data *data);
 void	render_map(t_data *data);
 
 
@@ -172,8 +174,11 @@ void	move_left(t_map *map, t_player *player, t_sprites *sprites);
 void	move_right(t_map *map, t_player *player, t_sprites *sprite);
 void	move_up(t_map *map, t_player *player, t_sprites *sprites);
 
+
 /* player_event.c */
 
 void	event_listener(t_data *data);
+void	fall(t_data *data);
+void	end_it(t_data *data);
 
 #endif

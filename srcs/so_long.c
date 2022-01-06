@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:34 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/04 14:21:35 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/06 10:37:06 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ int	main(int argc, char **argv)
 }
 
 // Afficher win / loose
-// X pour ennemis
+// else if 
 // Limiter nombre exit ?

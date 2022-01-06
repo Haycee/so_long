@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 10:20:19 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 09:16:45 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/05 09:14:26 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	initialize_all(t_data *data)
 	sprites_ini(&data->sprites, &data->win);
 	sprites_ini_2(&data->sprites, &data->win);
 	sprites_ini_3(&data->sprites, &data->win);
+	sprites_ini_4(&data->sprites, &data->win);
 	player_ini(&data->map, &data->player);
 }
 

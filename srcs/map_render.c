@@ -17,10 +17,10 @@ void	create_window(t_win *win, t_map *map)
 {
 	win->height = map->height * 64;
 	win->width = map->width * 64;
-	if (map->height > 10)
-		win->height = 64 * 15;
-	if (map->width > 20)
-		win->width = 64 * 25;
+	if (map->height > 20)
+		win->height = 64 * 20;
+	if (map->width > 30)
+		win->width = 64 * 30;
 	win->mlx = mlx_init();
 	win->window = mlx_new_window(win->mlx, win->width, win->height, "so_long");
 }
@@ -36,6 +36,13 @@ void	customize_map(t_map *map)
 			change_char(map, map->x, map->y);
 		}
 	}
+	int test = 0;
+	while (map->map[test])
+	{
+		printf("%s\n", map->map[test]);
+		test++;
+	}
+	printf("\n");
 }
 
 void	display_player(t_data *data)
@@ -74,9 +81,56 @@ void	display_hud(t_data *data)
 	free(rupee_sentence);
 }
 
+void	move_enemies(t_data *data)
+{
+	if (data->enemy.pos == 1)
+	{
+		data->enemy.direction = 'd';
+		data->enemy.pos = 0; // 0
+		data->enemy.sprite = data->sprites.e_down_2;
+	}
+	else if (data->enemy.pos == 0)
+	{
+		if (data->enemy.direction == 'd')
+		{
+			data->enemy.pos = -1; // -1
+			data->enemy.sprite = data->sprites.e_down_2;
+		}
+		else
+		{
+			data->enemy.pos = 1; // 1
+			data->enemy.sprite = data->sprites.e_up_2;
+		}
+	}
+	else if (data->enemy.pos == -1)
+	{
+		data->enemy.direction = 'u';
+		data->enemy.pos = 0; // 0
+		data->enemy.sprite = data->sprites.e_up_2;
+	}
+}
+
+void	display_enemy(t_data *data)
+{
+	if (data->enemy.pos == 1)
+	{
+		mlx_put_image_to_window(data->win.mlx, data->win.window,
+			data->enemy.sprite, data->win.x, data->win.y + 64); // + 64
+	}
+	if (data->enemy.pos == 0)
+		mlx_put_image_to_window(data->win.mlx, data->win.window,
+			data->enemy.sprite, data->win.x, data->win.y);
+	if (data->enemy.pos == -1)
+	{
+		mlx_put_image_to_window(data->win.mlx, data->win.window,
+			data->enemy.sprite, data->win.x, data->win.y - 64); // - 64
+	}
+}
+
 void	render_map(t_data *data)
 {
 	camera_ini(data);
+	move_enemies(data);
 	data->map.y = data->camera.y;
 	data->win.y = 0;
 	while (data->map.y < (data->win.height / 64) + data->camera.y && data->map.map[data->map.y])
@@ -87,6 +141,8 @@ void	render_map(t_data *data)
 			&& data->map.map[data->map.y][data->map.x])
 		{
 			select_sprite(data);
+			if (data->map.map[data->map.y][data->map.x] == 'X')
+				display_enemy(data);
 			display_player(data);
 			data->win.x += 64;
 			data->map.x++;

@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 13:05:32 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/04 14:57:17 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/05 15:26:03 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	set_animation_state(t_data *data)
 	counter_anim++;
 	if (counter_anim == 5000 && data->player.frame_fall < 7)
 	{
+		data->enemy.rand = randomize();
 		if (data->sprites.state == 0)
 			data->sprites.state = 1;
 		else

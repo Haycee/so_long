@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 09:05:30 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/04 15:56:01 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/05 09:23:29 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,6 @@ void	sprites_ini(t_sprites *sprites, t_win *win)
 			"./sprites/link/down/down_2.xpm", &sprites->size, &sprites->size);
 	sprites->down_3 = mlx_xpm_file_to_image(win->mlx,
 			"./sprites/link/down/down_3.xpm", &sprites->size, &sprites->size);
-	sprites->enemy = mlx_xpm_file_to_image(win->mlx,
-			"./sprites/enemy/enemy_1.xpm", &sprites->size, &sprites->size);
-	sprites->enemy_2 = mlx_xpm_file_to_image(win->mlx,
-			"./sprites/enemy/enemy_2.xpm", &sprites->size, &sprites->size);
 	sprites->exit = mlx_xpm_file_to_image(win->mlx,
 			"./sprites/floor/exit.xpm", &sprites->size, &sprites->size);
 	sprites->fall = mlx_xpm_file_to_image(win->mlx,
@@ -115,6 +111,23 @@ void	sprites_ini_3(t_sprites *sprites, t_win *win)
 	sprites->purse = mlx_xpm_file_to_image(win->mlx,
 			"./sprites/hud/purse.xpm", &sprites->size, &sprites->size);
 }
+
+void	sprites_ini_4(t_sprites *sprites, t_win *win)
+{
+	sprites->e_down_idle = mlx_xpm_file_to_image(win->mlx,
+			"./sprites/enemy/down/down.xpm", &sprites->size, &sprites->size);
+	sprites->e_down_2 = mlx_xpm_file_to_image(win->mlx,
+			"./sprites/enemy/down/down_2.xpm", &sprites->size, &sprites->size);
+	sprites->e_down_3 = mlx_xpm_file_to_image(win->mlx,
+			"./sprites/enemy/down/down_3.xpm", &sprites->size, &sprites->size);
+	sprites->e_up_idle = mlx_xpm_file_to_image(win->mlx,
+			"./sprites/enemy/up/up.xpm", &sprites->size, &sprites->size);
+	sprites->e_up_2 = mlx_xpm_file_to_image(win->mlx,
+			"./sprites/enemy/up/up_2.xpm", &sprites->size, &sprites->size);
+	sprites->e_up_3 = mlx_xpm_file_to_image(win->mlx,
+			"./sprites/enemy/up/up_3.xpm", &sprites->size, &sprites->size);
+}
+
 
 void	camera_ini(t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:33:57 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/04 13:20:04 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/06 17:44:34 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ void	fall(t_data *data)
 void	end_it(t_data *data)
 {
 	mlx_clear_window(data->win.mlx, data->win.window);
+
 }

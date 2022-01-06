@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 09:05:30 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/05 09:23:29 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/06 17:50:02 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void	sprites_ini(t_sprites *sprites, t_win *win)
 			"./sprites/link/fall/fall_4.xpm", &sprites->size, &sprites->size);
 	sprites->fall_5 = mlx_xpm_file_to_image(win->mlx,
 			"./sprites/link/fall/fall_5.xpm", &sprites->size, &sprites->size);
+	sprites->enemy_1 = mlx_xpm_file_to_image(win->mlx,
+			"./sprites/enemy/enemy_1.xpm", &sprites->size, &sprites->size);
+	sprites->enemy_2 = mlx_xpm_file_to_image(win->mlx,
+			"./sprites/enemy/enemy_2.xpm", &sprites->size, &sprites->size);
 }
 
 void	sprites_ini_2(t_sprites *sprites, t_win *win)
@@ -114,18 +118,8 @@ void	sprites_ini_3(t_sprites *sprites, t_win *win)
 
 void	sprites_ini_4(t_sprites *sprites, t_win *win)
 {
-	sprites->e_down_idle = mlx_xpm_file_to_image(win->mlx,
-			"./sprites/enemy/down/down.xpm", &sprites->size, &sprites->size);
-	sprites->e_down_2 = mlx_xpm_file_to_image(win->mlx,
-			"./sprites/enemy/down/down_2.xpm", &sprites->size, &sprites->size);
-	sprites->e_down_3 = mlx_xpm_file_to_image(win->mlx,
-			"./sprites/enemy/down/down_3.xpm", &sprites->size, &sprites->size);
-	sprites->e_up_idle = mlx_xpm_file_to_image(win->mlx,
-			"./sprites/enemy/up/up.xpm", &sprites->size, &sprites->size);
-	sprites->e_up_2 = mlx_xpm_file_to_image(win->mlx,
-			"./sprites/enemy/up/up_2.xpm", &sprites->size, &sprites->size);
-	sprites->e_up_3 = mlx_xpm_file_to_image(win->mlx,
-			"./sprites/enemy/up/up_3.xpm", &sprites->size, &sprites->size);
+	sprites->win = mlx_xpm_file_to_image(win->mlx,
+		"./sprites/win.xpm", &sprites->size, &sprites->size);
 }
 
 

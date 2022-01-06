@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:39 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/06 10:04:38 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/06 17:44:45 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,8 @@ typedef struct s_sprites
 	void	*down_idle;
 	void	*down_2;
 	void	*down_3;
-	void	*e_down_idle;
-	void	*e_down_2;
-	void	*e_down_3;
-	void	*e_up_idle;
-	void	*e_up_2;
-	void	*e_up_3;
+	void	*enemy_1;
+	void	*enemy_2;
 	void	*exit;
 	void	*fall;
 	void	*fall_2;
@@ -88,6 +84,7 @@ typedef struct s_sprites
 	void	*up_idle;
 	void	*up_2;
 	void	*up_3;
+	void	*win;
 }	t_sprites;
 
 typedef struct s_player
@@ -103,14 +100,6 @@ typedef struct s_player
 	int		y;
 }	t_player;
 
-typedef struct s_enemy
-{
-	void	*sprite; // !
-	char	direction; // !
-	int		pos;
-	int		rand; // !
-}	t_enemy;
-
 typedef struct s_camera
 {
 	int		x;
@@ -120,7 +109,6 @@ typedef struct s_camera
 typedef struct s_data
 {
 	t_camera	camera;
-	t_enemy		enemy;
 	t_map		map;
 	t_player	player;
 	t_sprites	sprites;
@@ -160,15 +148,12 @@ int		is_rectangular(t_map *map);
 void	create_window(t_win *win, t_map *map);
 void	customize_map(t_map *map);
 void	display_player(t_data *data);
-void	display_enemy(t_data *data);
-void	move_enemies(t_data *data);
 void	render_map(t_data *data);
 
 
 /* map_render_utils.c */
 
 void	change_char(t_map *map, int x, int y);
-void	place_enemy(t_map *map, int x, int y);
 void	select_sprite(t_data *data);
 void	select_sprite_2(t_data *data, int x, int y);
 void	select_sprite_3(t_data *data, int x, int y);

@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 09:14:22 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/06 12:34:13 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/06 18:08:13 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	change_char(t_map *map, int x, int y)
 			map->map[y][x] = '5';
 		else if (random >= 280 && random < 310)
 			map->map[y][x] = '7';
-		else if (random >= 310 && random < 320)
-			place_enemy(map, x, y);
+		else if (random >= 310 && random < 380)
+			map->map[y][x] = 'X';
 		else if (random >= 200 && sword_counter < 1)
 		{
 			sword_counter++;
@@ -41,23 +41,13 @@ void	change_char(t_map *map, int x, int y)
 			map->map[y][x] = 'S';
 }
 
-void	place_enemy(t_map *map, int x, int y)
-{
-	if(!ft_strchr("1S", map->map[y + 1][x]) && !ft_strchr("1S", map->map[y - 1][x]))
-	{
-		printf("y + 1 : %c\n", map->map[y + 1][x]);
-		printf("y - 1 : %c\n", map->map[y - 1][x]);
-		map->map[y][x] = 'X';
-	}
-}
-
 void	select_sprite(t_data *data)
 {
 	mlx_put_image_to_window(data->win.mlx, data->win.window,
 		data->sprites.grass, data->win.x, data->win.y);
 	if (ft_strchr("127CP", data->map.map[data->map.y][data->map.x]))
 		select_sprite_2(data, data->map.x, data->map.y);
-	else if ((ft_strchr("8SXE", data->map.map[data->map.y][data->map.x])))
+	else if ((ft_strchr("X8SE", data->map.map[data->map.y][data->map.x])))
 		select_sprite_3(data, data->map.x, data->map.y);
 	else
 		select_sprite_4(data, data->map.x, data->map.y);
@@ -82,8 +72,15 @@ void	select_sprite_2(t_data *data, int x, int y)
 void	select_sprite_3(t_data *data, int x, int y)
 {
 	if (data->map.map[y][x] == 'X')
-		display_enemy(data);
-	else if (data->map.map[y][x] == 'S')
+	{
+		if (data->sprites.state == 1)
+			mlx_put_image_to_window(data->win.mlx, data->win.window,
+				data->sprites.enemy_1, data->win.x, data->win.y);
+		else
+			mlx_put_image_to_window(data->win.mlx, data->win.window,
+				data->sprites.enemy_2, data->win.x, data->win.y);
+	}
+	if (data->map.map[y][x] == 'S')
 		mlx_put_image_to_window(data->win.mlx, data->win.window,
 			data->sprites.stone, data->win.x, data->win.y);
 	else if (data->map.map[y][x] == 'E')

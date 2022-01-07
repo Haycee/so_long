@@ -87,6 +87,7 @@ void	display_hud(t_data *data)
 void	render_map(t_data *data)
 {
 	camera_ini(data);
+	mlx_clear_window(data->win.mlx, data->win.window);
 	data->map.y = data->camera.y;
 	data->win.y = 0;
 	while (data->map.y < (data->win.height / 64) + data->camera.y && data->map.map[data->map.y])

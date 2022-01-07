@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:34 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/06 18:00:47 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/07 09:46:46 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 	if (!data.map.end)
 	{
 		render_map(&data);
-		// mlx_loop_hook(data.win.mlx, set_animation_state, &data);
+		mlx_loop_hook(data.win.mlx, set_animation_state, &data);
 	}
 	mlx_hook(data.win.window, 2, 0, key_press, &data);
 	mlx_hook(data.win.window, 3, 0, key_release, &data);

@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 09:14:22 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/06 18:08:13 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/07 09:52:28 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	change_char(t_map *map, int x, int y)
 			map->map[y][x] = '5';
 		else if (random >= 280 && random < 310)
 			map->map[y][x] = '7';
-		else if (random >= 310 && random < 380)
+		else if (random >= 310 && random < 315)
 			map->map[y][x] = 'X';
 		else if (random >= 200 && sword_counter < 1)
 		{

@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 09:14:22 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/07 09:52:28 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/07 13:09:14 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	select_sprite_2(t_data *data, int x, int y)
 	else if (data->map.map[y][x] == '7')
 		mlx_put_image_to_window(data->win.mlx, data->win.window,
 			data->sprites.leaf, data->win.x, data->win.y);
-	else if (data->map.map[y][x] == 'C') // else 
+	else if (data->map.map[y][x] == 'C')
 		mlx_put_image_to_window(data->win.mlx, data->win.window,
 			data->sprites.rupee, data->win.x, data->win.y);
 }
@@ -86,7 +86,7 @@ void	select_sprite_3(t_data *data, int x, int y)
 	else if (data->map.map[y][x] == 'E')
 		mlx_put_image_to_window(data->win.mlx, data->win.window,
 			data->sprites.exit, data->win.x, data->win.y);
-	else if (data->map.map[y][x] == '8') // else 
+	else if (data->map.map[y][x] == '8')
 		mlx_put_image_to_window(data->win.mlx, data->win.window,
 			data->sprites.sword, data->win.x, data->win.y);
 }

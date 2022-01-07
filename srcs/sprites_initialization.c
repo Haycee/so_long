@@ -1,36 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialization.c                                   :+:      :+:    :+:   */
+/*   sprites_initialization.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 09:05:30 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/06 17:50:02 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/07 13:24:17 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	player_ini(t_map *map, t_player *player)
-{
-	int	y;
-	int	x;
-
-	y = -1;
-	while (map->map[++y])
-	{
-		x = -1;
-		while (map->map[y][++x])
-		{
-			if (map->map[y][x] == 'P')
-			{
-				player->y = y;
-				player->x = x;
-			}
-		}
-	}
-}
 
 void	sprites_ini(t_sprites *sprites, t_win *win)
 {
@@ -119,25 +99,7 @@ void	sprites_ini_3(t_sprites *sprites, t_win *win)
 void	sprites_ini_4(t_sprites *sprites, t_win *win)
 {
 	sprites->win = mlx_xpm_file_to_image(win->mlx,
-		"./sprites/win.xpm", &sprites->size, &sprites->size);
-}
-
-
-void	camera_ini(t_data *data)
-{
-	int	x;
-	int	y;
-
-	y = data->player.y - ((data->win.height / 64) / 2);
-	x = data->player.x - ((data->win.width / 64) / 2);
-	if (y < 0)
-		y = 0;
-	if (x < 0)
-		x = 0;
-	if (y + data->win.height / 64 > data->map.height)
-		y = data->map.height - (data->win.height / 64);
-	if (x + data->win.width / 64 > data->map.width)
-		x = data->map.width - (data->win.width / 64);
-	data->camera.y = y;
-	data->camera.x = x;
+			"./sprites/win_500_98.xpm", &sprites->size, &sprites->size);
+	sprites->loose = mlx_xpm_file_to_image(win->mlx,
+			"./sprites/loose_500_75.xpm", &sprites->size, &sprites->size);
 }

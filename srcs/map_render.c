@@ -36,13 +36,6 @@ void	customize_map(t_map *map)
 			change_char(map, map->x, map->y);
 		}
 	}
-	int test = 0;
-	while (map->map[test])
-	{
-		printf("%s\n", map->map[test]);
-		test++;
-	}
-	printf("\n");
 }
 
 void	display_player(t_data *data)
@@ -61,7 +54,7 @@ void	display_player(t_data *data)
 void	display_hud(t_data *data)
 {
 	char	*proto_sentence;
-	char 	*rupee_sentence;
+	char	*rupee_sentence;
 	int		offset_steps;
 	int		offset_rupees;
 
@@ -71,13 +64,12 @@ void	display_hud(t_data *data)
 		error_handler(2);
 	offset_steps = ft_strlen(ft_itoa(data->player.steps));
 	offset_rupees = ft_strlen(rupee_sentence);
-
 	mlx_put_image_to_window(data->win.mlx, data->win.window,
 		data->sprites.shoe, 74, 64);
 	mlx_put_image_to_window(data->win.mlx, data->win.window,
 		data->sprites.purse, 119, 64);
-	mlx_string_put(data->win.mlx, data->win.window, 105 - (offset_steps * 3), 123,
-		0xFFFFFFFF, ft_itoa(data->player.steps));
+	mlx_string_put(data->win.mlx, data->win.window, 105 - (offset_steps * 3),
+		123, 0xFFFFFFFF, ft_itoa(data->player.steps));
 	mlx_string_put(data->win.mlx, data->win.window, 148 - (offset_rupees * 3),
 		123, 0xFFFFFFFF, rupee_sentence);
 	free(proto_sentence);
@@ -90,7 +82,8 @@ void	render_map(t_data *data)
 	mlx_clear_window(data->win.mlx, data->win.window);
 	data->map.y = data->camera.y;
 	data->win.y = 0;
-	while (data->map.y < (data->win.height / 64) + data->camera.y && data->map.map[data->map.y])
+	while (data->map.y < (data->win.height / 64) + data->camera.y
+		&& data->map.map[data->map.y])
 	{
 		data->win.x = 0;
 		data->map.x = data->camera.x;

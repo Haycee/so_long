@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:33:57 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/07 09:52:12 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/07 13:19:27 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	event_listener(t_data *data)
 		data->map.map[data->player.y][data->player.x] = '0';
 		data->player.rupees++;
 	}
-	if (data->map.map[data->player.y][data->player.x] == 'X')
-		printf("loose\n");
 	if (data->map.map[data->player.y][data->player.x] == 'E')
 		data->player.orientation = 'f';
 }
@@ -48,5 +46,20 @@ void	fall(t_data *data)
 
 void	end_it(t_data *data)
 {
+	int	win_y;
+	int	win_x;
+	int	loose_y;
+	int	loose_x;
+
+	win_y = (data->win.height / 2) - 50;
+	win_x = (data->win.width / 2) - 250;
+	loose_y = (data->win.height / 2) - 37;
+	loose_x = (data->win.width / 2) - 250;
 	mlx_clear_window(data->win.mlx, data->win.window);
+	if (data->player.rupees == data->map.rupee_count)
+		mlx_put_image_to_window(data->win.mlx, data->win.window,
+			data->sprites.win, win_x, win_y);
+	else
+		mlx_put_image_to_window(data->win.mlx, data->win.window,
+			data->sprites.loose, loose_x, loose_y);
 }

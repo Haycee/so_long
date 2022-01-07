@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:34 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/07 09:46:46 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/07 14:39:15 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,23 @@ static void	create_map(t_map *map, char *argv)
 int	main(int argc, char **argv)
 {
 	t_data		data;
+	int			to_exention;
 
+	to_exention = ft_strlen(argv[1]) - 4;
 	ft_memset(&data, 0, sizeof(data));
-	if (argc < 2 || !ft_strnstr(argv[1], ".ber", ft_strlen(argv[1]))) // ! strnstr
+	if (argc < 2 || ft_strnstr(argv[1] + to_exention, ".ber", 4) == NULL)
 		error_handler(1);
 	create_map(&data.map, argv[1]);
 	parse_map(&data.map);
 	create_window(&data.win, &data.map);
 	customize_map(&data.map);
 	initialize_all(&data);
-	if (!data.map.end)
-	{
-		render_map(&data);
-		mlx_loop_hook(data.win.mlx, set_animation_state, &data);
-	}
-	mlx_hook(data.win.window, 2, 0, key_press, &data);
+	render_map(&data);
+	mlx_loop_hook(data.win.mlx, set_animation_state, &data);
 	mlx_hook(data.win.window, 3, 0, key_release, &data);
+	mlx_hook(data.win.window, 2, 0, key_press, &data);
 	mlx_hook(data.win.window, 17, 0, close_window, &data);
 	mlx_loop(data.win.mlx);
 }
 
-// Afficher win / loose
-// else if 
-// Limiter nombre exit ?
+// Abort malloc already allocated

@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 13:05:32 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/06 15:13:36 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/07 10:59:20 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,18 @@ int	close_window(t_data *data)
 
 int	key_release(int key, t_data *data)
 {
-	data->player.frame = 0;
-	if (key == 13)
-		data->player.sprite = data->sprites.up_idle;
-	if (key == 0)
-		data->player.sprite = data->sprites.left_idle;
-	if (key == 1)
-		data->player.sprite = data->sprites.down_idle;
-	if (key == 2)
-		data->player.sprite = data->sprites.right_idle;
-	display_player(data);
+	if (data->player.orientation != 'f')
+	{
+		data->player.frame = 0;
+		if (key == 13)
+			data->player.sprite = data->sprites.up_idle;
+		if (key == 0)
+			data->player.sprite = data->sprites.left_idle;
+		if (key == 1)
+			data->player.sprite = data->sprites.down_idle;
+		if (key == 2)
+			data->player.sprite = data->sprites.right_idle;
+		display_player(data);
+	}
 	return (0);
 }

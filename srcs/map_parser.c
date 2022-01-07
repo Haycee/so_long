@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:25:21 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/03 10:57:45 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/07 12:59:27 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	check_chars(t_map *map)
 		}
 	}
 	if (map->rupee_count < 1 || map->exit_count < 1
-		|| map->player_count < 1) // player_count && exit_count max 1 ?
+		|| map->player_count < 1)
 		return (0);
 	return (1);
 }

@@ -57,22 +57,25 @@ void	display_hud(t_data *data)
 	char	*rupee_sentence;
 	int		offset_steps;
 	int		offset_rupees;
+	char *step_count = ft_itoa(data->player.steps);
+	char *rupee_count = ft_itoa(data->map.rupee_count);
 
 	proto_sentence = ft_strjoin(ft_itoa(data->player.rupees), "/");
-	rupee_sentence = ft_strjoin(proto_sentence, ft_itoa(data->map.rupee_count));
+	rupee_sentence = ft_strjoin(proto_sentence, rupee_count);
 	if (rupee_sentence == NULL)
 		error_handler(2);
-	offset_steps = ft_strlen(ft_itoa(data->player.steps));
+	offset_steps = ft_strlen(step_count);
 	offset_rupees = ft_strlen(rupee_sentence);
 	mlx_put_image_to_window(data->win.mlx, data->win.window,
 		data->sprites.shoe, 74, 64);
 	mlx_put_image_to_window(data->win.mlx, data->win.window,
 		data->sprites.purse, 119, 64);
 	mlx_string_put(data->win.mlx, data->win.window, 105 - (offset_steps * 3),
-		123, 0xFFFFFFFF, ft_itoa(data->player.steps));
+		123, 0xFFFFFFFF, step_count);
 	mlx_string_put(data->win.mlx, data->win.window, 148 - (offset_rupees * 3),
 		123, 0xFFFFFFFF, rupee_sentence);
-	free(proto_sentence);
+	free(step_count);
+	free(rupee_count);
 	free(rupee_sentence);
 }
 

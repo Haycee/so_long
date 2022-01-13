@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:34 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/07 14:39:15 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/01/13 15:18:01 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,3 +62,5 @@ int	main(int argc, char **argv)
 }
 
 // Abort malloc already allocated
+// afficher steps shell
+// couper hud

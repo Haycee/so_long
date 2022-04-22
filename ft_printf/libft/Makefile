@@ -59,29 +59,26 @@ PINK	:=	\033[35m
 BOLD	:=	\033[1m
 END		:=	\033[0m
 
-all :	${NAME}
-
-${NAME}	:	${OBJS}
-	printf "$(GREEN)> All the libft .c files have been compiled successfully !$(END)\n"
-	printf "$(BLUE)> Creating the libft archive file :$(END) $@\n"
-	ar -crs ${NAME} ${OBJS}
-	printf "$(GREEN)> Libft archive has been compiled successfully !$(END)\n"
-
+all : ${NAME}
 
 %.o: %.c libft.h
-	${CC} ${CFLAGS} -c -o $@ $<
-	printf "$(BLUE)> Compiling :$(END) libft/$<\n"
+	${CC} ${CFLAGS} -c $< -o $@
+	printf "$(BLUE)> Compiling :$(END) $<\n"
 
-bonus	:	all
+${NAME}	: ${OBJS}
+	printf "$(GREEN)> All the libft.c files have been compiled successfully !$(END)\n"
+	printf "$(BLUE)> Creating the libft archive file :$(END) $@\n"
+	ar rcs ${NAME} ${OBJS}
+	printf "$(GREEN)> Libft archive has been compiled successfully !$(END)\n"
+
+bonus: all
 
 clean :
 	${RM} ${OBJS}
 
-fclean : clean
+fclean : 	clean
 	${RM} ${NAME}
 
 re : fclean all
 
 .PHONY: all bonus clean fclean re
-
-.SILENT:

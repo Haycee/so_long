@@ -6,7 +6,7 @@
 #    By: agirardi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 09:57:24 by agirardi          #+#    #+#              #
-#    Updated: 2022/04/22 19:54:30 by agirardi         ###   ########lyon.fr    #
+#    Updated: 2022/04/22 21:41:05 by agirardi         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ END			:=	\033[0m
 
 all : mlx ft_printf ${NAME}
 
+.SILENT:
 
 mlx:
 	make -C ./mlx
@@ -70,10 +71,11 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCS) Makefile | $(OBJ_PATH)
 $(OBJ_PATH):
 	mkdir -p $(OBJ_PATH)
 
-
 ${NAME}: ${OBJS} ${PRINTF_AR}
-	${CC} ${OBJS} ${PRINTF_AR} -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	printf "$(GREEN)> All the .c files from so_long have been compiled successfully !$(END)\n"
 	printf "$(BLUE)> Creating the executable file :$(END) $@\n"
+	${CC} ${OBJS} ${PRINTF_AR} -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	printf "$(GREEN)> Executable file has been created successfully !$(END)\n"
 
 bonus : all
 
@@ -83,38 +85,14 @@ clean:
 	make clean -C ./mlx
 	printf "$(GREEN)> All the .o files have been removed successfully !$(END)\n"
 
-
 fclean: clean
 	${RM} ${NAME}
-	printf "$(GREEN)> so_long executable file have been removed successfully !$(END)\n"
 	${RM} ${PRINTF_AR}
 	make fclean -C ./ft_printf
 	${RM} ${MLX_AR}
 	make clean -C ./mlx
-
+	printf "$(GREEN)> all executable files have been removed successfully !$(END)\n"
 
 re: fclean all
 
-.PHONY: all ft_printf mlx clean fclean re
-
-.SILENT:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.PHONY: all ft_printf bonus mlx clean fclean re

@@ -23,19 +23,21 @@ END		:=	\033[0m
 
 all	: libft ${NAME}
 
+# .SILENT:
+
 libft :
 	make -C ./libft
 
-%.o: %.c ft_printf.h libft./libft.h
+%.o: %.c ft_printf.h
 	${CC} ${FLAGS} -o $@ -c $<
-	printf "$(BLUE)> Compiling :$(END) libft/$<\n"
+	printf "$(BLUE)> Compiling :$(END) $<\n"
 
 ${NAME}	: libft ${OBJS} 
 	cp ./libft/libft.a ${NAME}
-	printf "$(GREEN)> All the printf.c files have been compiled successfully !$(END)\n"
+	printf "$(GREEN)> All the ft_printf.c files have been compiled successfully !$(END)\n"
 	printf "$(BLUE)> Creating the Printflibft archive file :$(END) $@\n"
 	ar -crs ${NAME} ${OBJS}
-	printf "$(GREEN)> Printflibft archive has been compiled successfully !$(END)\n"
+	printf "$(GREEN)> Libftprintf archive has been compiled successfully !$(END)\n"
 
 clean :
 	${RM} ${OBJS}

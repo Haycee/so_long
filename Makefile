@@ -6,58 +6,115 @@
 #    By: agirardi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 09:57:24 by agirardi          #+#    #+#              #
-#    Updated: 2022/01/07 13:26:06 by agirardi         ###   ########lyon.fr    #
+#    Updated: 2022/04/22 19:54:30 by agirardi         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	so_long
+NAME		:=	so_long
 
-INCS		=	./includes/so_long.h
-	
-SRCS		=	./srcs/hook.c \
-				./srcs/map_parser.c \
-				./srcs/map_render.c \
-				./srcs/map_render_utils.c \
-				./srcs/player.c \
-				./srcs/player_event.c \
-				./srcs/player_initialization.c \
-				./srcs/so_long.c \
-				./srcs/so_long_utils.c \
-				./srcs/sprites_initialization.c \
+INC_PATH	:=	includes
+SRC_PATH	:=	srcs
+OBJ_PATH	:=	.objects
 
-LIBFT_AR	=	./libft/libft.a
+LST_INCS	:=	so_long.h
 
-OBJS		=	${SRCS:.c=.o}
+LST_SRCS	:=	hook.c \
+				map_parser.c \
+				map_render.c \
+				map_render_utils.c \
+				player.c \
+				player_event.c \
+				player_initialization.c \
+				so_long.c \
+				so_long_utils.c \
+				sprites_initialization.c
 
-CC			=	gcc
+LST_OBJS	:=	$(LST_SRCS:.c=.o)
 
-CFLAGS		=	-Wall -Wextra -Werror -g3 -I mlx
+INCS		:=	$(addprefix $(INC_PATH)/,$(LST_INCS))
+SRCS		:=	$(addprefix $(SRC_PATH)/,$(LST_SRCS))
+OBJS		:=	$(addprefix $(OBJ_PATH)/,$(LST_OBJS))
 
-RM			=	rm -rf
+MLX_AR		:=	./mlx/libmlx.a
 
-all : mlx libft ${NAME}
+PRINTF_AR	:=	./ft_printf/libftprintf.a
 
-libft:
-	@make -C ./libft --no-print-directory
+CC			:=	gcc
+
+CFLAGS		:=	-Wall -Wextra -Werror -I mlx
+
+RM			:=	rm -rf
+
+ERASE		:=	\033[2K\r
+BOLD		:=	\033[1m
+redir		:=	\033[31m
+GREEN		:=	\033[32m
+BLUE		:=	\033[34m
+PINK		:=	\033[35m
+BOLD		:=	\033[1m
+END			:=	\033[0m
+
+all : mlx ft_printf ${NAME}
+
 
 mlx:
-	@make -C ./mlx --no-print-directory
+	make -C ./mlx
 
-%.o: %.c ${INCS}
-	${CC} ${CFLAGS} -I mlx -c $< -o $@
+ft_printf:
+	make -C ./ft_printf
 
-${NAME}: ${OBJS} ${LIBFT_AR}
-	${CC} ${OBJS} ${LIBFT_AR} -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCS) Makefile | $(OBJ_PATH)
+	${CC} ${CFLAGS} -c $< -o $@
+	printf "$(BLUE)> Compiling :$(END) $<\n"
+
+$(OBJ_PATH):
+	mkdir -p $(OBJ_PATH)
+
+
+${NAME}: ${OBJS} ${PRINTF_AR}
+	${CC} ${OBJS} ${PRINTF_AR} -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	printf "$(BLUE)> Creating the executable file :$(END) $@\n"
+
+bonus : all
 
 clean:
-	${RM} ${OBJS}
-	make clean -C ./libft
+	${RM} ${OBJ_PATH}
+	make clean -C ./ft_printf
+	make clean -C ./mlx
+	printf "$(GREEN)> All the .o files have been removed successfully !$(END)\n"
+
 
 fclean: clean
-	${RM} ${LIBFT_AR}
 	${RM} ${NAME}
-	make -C mlx clean
+	printf "$(GREEN)> so_long executable file have been removed successfully !$(END)\n"
+	${RM} ${PRINTF_AR}
+	make fclean -C ./ft_printf
+	${RM} ${MLX_AR}
+	make clean -C ./mlx
+
 
 re: fclean all
 
-.PHONY: all libft mlx clean fclean re
+.PHONY: all ft_printf mlx clean fclean re
+
+.SILENT:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

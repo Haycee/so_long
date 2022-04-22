@@ -63,7 +63,7 @@ void	display_hud(t_data *data)
 	proto_sentence = ft_strjoin(ft_itoa(data->player.rupees), "/");
 	rupee_sentence = ft_strjoin(proto_sentence, rupee_count);
 	if (rupee_sentence == NULL)
-		error_handler(2);
+		error_handler(TECH);
 	offset_steps = ft_strlen(step_count);
 	offset_rupees = ft_strlen(rupee_sentence);
 	mlx_put_image_to_window(data->win.mlx, data->win.window,

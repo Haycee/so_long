@@ -1,6 +1,6 @@
-*.o
-*/*.o
-*/*.a
-so_long
+.vscode
 .DS_Store
-*/.DS_Store
+so_long
+*.o
+*.a
+.dSYM

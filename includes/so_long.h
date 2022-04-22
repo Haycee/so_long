@@ -6,14 +6,21 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:39 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/07 13:27:43 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 19:27:42 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../libft/libft.h"
+# define PATH 1
+# define TECH 2
+# define PARSING 3
+# define OPEN_FILE 4
+# define CLOSE_FILE 5
+# define FOLDER 6
+
+# include "../ft_printf/ft_printf.h"
 # include "../mlx/mlx.h"
 
 # include <stdio.h>
@@ -119,7 +126,7 @@ typedef struct s_data
 /* so_long_utils.c */
 
 void	close_file(int fd);
-void	error_handler(int error_num);
+void	error_handler(int error_type);
 void	initialize_all(t_data *data);
 int		open_file(char *argv);
 int		randomize(void);

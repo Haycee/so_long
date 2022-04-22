@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:25:21 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/07 12:59:27 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 18:21:18 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	parse_map(t_map *map)
 {
 	if (!is_rectangular(map) || !check_chars(map) || !check_borders(map))
-		error_handler(3);
+		error_handler(PARSING);
 }
 
 int	is_rectangular(t_map *map)

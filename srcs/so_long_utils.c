@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 10:20:19 by agirardi          #+#    #+#             */
-/*   Updated: 2022/01/06 17:48:28 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 19:26:48 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,19 @@ int	open_file(char *argv)
 
 	fd = open(argv, O_DIRECTORY);
 	if (fd != -1)
-		error_handler(2);
+		error_handler(FOLDER);
+	
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-		return (-1);
+		error_handler(OPEN_FILE);
+		
 	return (fd);
 }
 
 void	close_file(int fd)
 {
 	if (close(fd) == -1)
-		error_handler(2);
+		error_handler(CLOSE_FILE);
 }
 
 int	randomize(void)
@@ -40,7 +42,7 @@ int	randomize(void)
 
 	fd = open("/dev/urandom", O_RDONLY);
 	if (fd < 0)
-		error_handler(2);
+		error_handler(TECH);
 	read(fd, buffer, sizeof(char) * 3);
 	buffer[4] = '\0';
 	i = -1;
@@ -48,7 +50,7 @@ int	randomize(void)
 	while (buffer[++i])
 		result += buffer[i];
 	if (close(fd) == -1)
-		error_handler(2);
+		error_handler(TECH);
 	if (result < 0)
 		result *= -1;
 	return (result);
@@ -63,13 +65,20 @@ void	initialize_all(t_data *data)
 	player_ini(&data->map, &data->player);
 }
 
-void	error_handler(int error_num)
+void	error_handler(int error_type)
 {
-	if (error_num == 1)
-		printf("Error\nInvalid path\n");
-	if (error_num == 2)
-		printf("Error\nSomething went wrong while creating the map\n");
-	if (error_num == 3)
-		printf("Error\nInvalid map\n");
+	if (error_type == PATH)
+		ft_printf("Error\nInvalid path\n");
+	if (error_type == TECH)
+		ft_printf("Error\nSomething went wrong while creating the map\n");
+	if (error_type == PARSING)
+		ft_printf("Error\nInvalid map\n");
+	if (error_type == OPEN_FILE)
+		ft_printf("Error\nCould not open the map\n");
+	if (error_type == CLOSE_FILE)
+		ft_printf("Error\nCould not close the map\n");
+	if (error_type == FOLDER)
+		ft_printf("Error\nPlease open a .ber file\n");
+
 	exit(1);
 }

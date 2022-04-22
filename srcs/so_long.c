@@ -6,11 +6,13 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:34 by agirardi          #+#    #+#             */
-/*   Updated: 2022/04/22 19:28:20 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 20:32:36 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+// commentaire dans hook.c
 
 // sanitize etc...
 

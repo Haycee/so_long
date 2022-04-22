@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 13:05:32 by agirardi          #+#    #+#             */
-/*   Updated: 2022/04/22 19:26:48 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 20:32:12 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	set_animation_state(t_data *data)
 int	close_window(t_data *data)
 {
 	mlx_destroy_window(data->win.mlx, data->win.window);
-	// free(data->map.map);
+	// free(data->map.map); !!
 	exit(0);
 }
 

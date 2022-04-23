@@ -1,4 +1,12 @@
-SRCS	=	ft_isalnum.c \
+NAME:=		libft.a
+
+INC_PATH:=	includes
+SRC_PATH:=	srcs
+OBJ_PATH:=	.objects
+
+LST_INCS:=	libft.h
+
+LST_SRCS:=	ft_isalnum.c \
 			ft_isalpha.c \
 			ft_isascii.c \
 			ft_isdigit.c \
@@ -41,29 +49,34 @@ SRCS	=	ft_isalnum.c \
 			ft_lstmap.c \
 			get_next_line.c
 
-OBJS	= ${SRCS:.c=.o}
+LST_OBJS:=	$(LST_SRCS:.c=.o)
 
-NAME	= libft.a
+INCS:=		$(addprefix $(INC_PATH)/,$(LST_INCS))
+SRCS:=		$(addprefix $(SRC_PATH)/,$(LST_SRCS))
+OBJS:=		$(addprefix $(OBJ_PATH)/,$(LST_OBJS))
 
-CC		= gcc
-CFLAGS	=  -Wall -Wextra -Werror
+CC:=		gcc
+CFLAGS:= 	-Wall -Wextra -Werror -I $(INCS)
 
-RM = rm -rf
+RM:=		rm -rf
 
-ERASE	:=	\033[2K\r
-BOLD	:=	\033[1m
-redir	:=	\033[31m
-GREEN	:=	\033[32m
-BLUE	:=	\033[34m
-PINK	:=	\033[35m
-BOLD	:=	\033[1m
-END		:=	\033[0m
+ERASE:=		\033[2K\r
+BOLD:=		\033[1m
+redir:=		\033[31m
+GREEN:=		\033[32m
+BLUE:=		\033[34m
+PINK:=		\033[35m
+BOLD:=		\033[1m
+END	:=		\033[0m
 
 all : ${NAME}
 
-%.o: %.c libft.h
-	${CC} ${CFLAGS} -c $< -o $@
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCS) Makefile | $(OBJ_PATH)
+	$(CC) $(CFLAGS) -c $< -o $@
 	printf "$(BLUE)> Compiling :$(END) $<\n"
+	
+$(OBJ_PATH):
+	mkdir -p $(OBJ_PATH)
 
 ${NAME}	: ${OBJS}
 	printf "$(GREEN)> All the libft.c files have been compiled successfully !$(END)\n"
@@ -74,11 +87,13 @@ ${NAME}	: ${OBJS}
 bonus: all
 
 clean :
-	${RM} ${OBJS}
+	${RM} ${OBJ_PATH}
 
-fclean : 	clean
+fclean : clean
 	${RM} ${NAME}
 
 re : fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
+
+.SILENT:

@@ -2,6 +2,8 @@
 .DS_Store
 .objects
 so_long
+libft.a
+libftprintf.a
 *.o
 *.a
 .dSYM

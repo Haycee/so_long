@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:39 by agirardi          #+#    #+#             */
-/*   Updated: 2022/04/22 19:27:42 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/04/23 02:33:30 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define CLOSE_FILE 5
 # define FOLDER 6
 
-# include "../ft_printf/ft_printf.h"
+# include "../ft_printf/includes/ft_printf.h"
 # include "../mlx/mlx.h"
 
 # include <stdio.h>

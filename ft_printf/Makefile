@@ -18,7 +18,7 @@ OBJS		:=	$(addprefix $(OBJ_PATH)/,$(LST_OBJS))
 LIBFT_AR	:= ./libft/libft.a
 
 CC			:= gcc
-CFLAGS		:= -Wall -Wextra -Werror -I $(INCS)
+CFLAGS		:= -Wall -Wextra -Werror
 
 RM			:= rm -rf
 
@@ -37,7 +37,7 @@ libft :
 	make -C ./libft
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCS) ${LIBFT_AR} Makefile | $(OBJ_PATH)
-	${CC} ${FLAGS} -o $@ -c $<
+	${CC} ${FLAGS} -I $(INC_PATH) -o $@ -c $<
 	printf "$(BLUE)> Compiling :$(END) $<\n"
 
 $(OBJ_PATH):

@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 13:05:32 by agirardi          #+#    #+#             */
-/*   Updated: 2022/04/22 20:32:12 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/05 17:27:00 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	key_press(int key, t_data *data)
 {
-
-	static int old_step_count = -1;
+	static int	old_step_count = -1;
 
 	old_step_count = data->player.steps;
 	if (data->map.end == 1)
@@ -70,7 +69,6 @@ int	set_animation_state(t_data *data)
 int	close_window(t_data *data)
 {
 	mlx_destroy_window(data->win.mlx, data->win.window);
-	// free(data->map.map); !!
 	exit(0);
 }
 

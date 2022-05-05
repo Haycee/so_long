@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 10:20:19 by agirardi          #+#    #+#             */
-/*   Updated: 2022/04/22 19:26:48 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/05 17:27:48 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ int	open_file(char *argv)
 	fd = open(argv, O_DIRECTORY);
 	if (fd != -1)
 		error_handler(FOLDER);
-	
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 		error_handler(OPEN_FILE);
-		
 	return (fd);
 }
 
@@ -79,6 +77,5 @@ void	error_handler(int error_type)
 		ft_printf("Error\nCould not close the map\n");
 	if (error_type == FOLDER)
 		ft_printf("Error\nPlease open a .ber file\n");
-
 	exit(1);
 }

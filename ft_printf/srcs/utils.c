@@ -6,27 +6,27 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 17:07:37 by agirardi          #+#    #+#             */
-/*   Updated: 2022/04/23 02:31:22 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/05 17:22:43 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	print_numbers(unsigned long long nb, unsigned long long base_size, char *base)
+void	print_numbers(unsigned long long nb, unsigned long long b_s, char *b);
 {
 	if (nb < 0)
 	{
 		write(1, "-", 1);
-		print_numbers(nb *(-1), base_size, base);
+		print_numbers(nb *(-1), b_s, b);
 	}
-	if (nb >= 0 && nb < base_size)
+	if (nb >= 0 && nb < b_s)
 	{
-		write(1, &base[nb], 1);
+		write(1, &b[nb], 1);
 	}
-	if (nb > base_size - 1)
+	if (nb > b_s - 1)
 	{
-		print_numbers((nb / base_size), base_size, base);
-		print_numbers((nb % base_size), base_size, base);
+		print_numbers((nb / b_s), b_s, b);
+		print_numbers((nb % b_s), b_s, b);
 	}
 }
 

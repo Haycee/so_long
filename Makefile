@@ -6,7 +6,7 @@
 #    By: agirardi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 09:57:24 by agirardi          #+#    #+#              #
-#    Updated: 2022/04/22 21:41:05 by agirardi         ###   ########lyon.fr    #
+#    Updated: 2022/05/05 17:19:08 by agirardi         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ PRINTF_AR	:=	./ft_printf/libftprintf.a
 
 CC			:=	gcc
 
-CFLAGS		:=	-Wall -Wextra -Werror -I mlx
+CFLAGS		:=	-Wall -Wextra -Werror
 
 RM			:=	rm -rf
 
@@ -65,7 +65,7 @@ ft_printf:
 	make -C ./ft_printf
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCS) Makefile | $(OBJ_PATH)
-	${CC} ${CFLAGS} -c $< -o $@
+	${CC} ${CFLAGS} -I $(INC_PATH) -I mlx -c $< -o $@
 	printf "$(BLUE)> Compiling :$(END) $<\n"
 
 $(OBJ_PATH):

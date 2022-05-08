@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:25:21 by agirardi          #+#    #+#             */
-/*   Updated: 2022/05/08 14:01:47 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/08 14:06:52 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	check_chars(t_map *map)
 		x = -1;
 		while (map->map[y][++x])
 		{
-			if (!ft_strchr("01CEPX", map->map[y][x]))
+			if (!ft_strchr("01CEP", map->map[y][x]))
 				return (0);
 			if (map->map[y][x] == 'C')
 				map->rupee_count++;

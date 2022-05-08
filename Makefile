@@ -6,7 +6,7 @@
 #    By: agirardi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 09:57:24 by agirardi          #+#    #+#              #
-#    Updated: 2022/05/05 17:19:08 by agirardi         ###   ########lyon.fr    #
+#    Updated: 2022/05/08 19:19:05 by agirardi         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ LST_SRCS	:=	hook.c \
 				player.c \
 				player_event.c \
 				player_initialization.c \
+				sprite.c \
 				so_long.c \
 				so_long_utils.c \
 				sprites_initialization.c

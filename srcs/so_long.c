@@ -6,15 +6,13 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:34 by agirardi          #+#    #+#             */
-/*   Updated: 2022/05/08 13:55:05 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/08 19:17:30 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-// commentaire dans hook.c // 
-
-static void	create_map(t_map *map, char *argv)
+static void	load_map(t_map *map, char *argv)
 {
 	int		fd;
 	char	*unprocessed_map;
@@ -47,10 +45,10 @@ int	main(int argc, char **argv)
 	int			to_exention;
 
 	to_exention = ft_strlen(argv[1]) - 4;
-	ft_memset(&data, 0, sizeof(data));
 	if (argc != 2 || ft_strnstr(argv[1] + to_exention, ".ber", 4) == NULL)
 		error_handler(PATH);
-	create_map(&data.map, argv[1]);
+	ft_memset(&data, 0, sizeof(data));
+	load_map(&data.map, argv[1]);
 	parse_map(&data.map);
 	create_window(&data.win, &data.map);
 	customize_map(&data.map);

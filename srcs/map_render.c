@@ -53,19 +53,15 @@ void	display_player(t_data *data)
 
 void	display_hud(t_data *data)
 {
-	char	*proto_sentence;
-	char	*rupee_sentence;
+	char	*rupee_count;
+	char	*step_count;
 	int		offset_steps;
 	int		offset_rupees;
-	char *step_count = ft_itoa(data->player.steps);
-	char *rupee_count = ft_itoa(data->map.rupee_count);
-
-	proto_sentence = ft_strjoin(ft_itoa(data->player.rupees), "/");
-	rupee_sentence = ft_strjoin(proto_sentence, rupee_count);
-	if (rupee_sentence == NULL)
-		error_handler(TECH);
+	
+	step_count = ft_itoa(data->player.steps);
+	rupee_count = get_rupee_sentence(data);
 	offset_steps = ft_strlen(step_count);
-	offset_rupees = ft_strlen(rupee_sentence);
+	offset_rupees = ft_strlen(rupee_count);
 	mlx_put_image_to_window(data->win.mlx, data->win.window,
 		data->sprites.shoe, 74, 64);
 	mlx_put_image_to_window(data->win.mlx, data->win.window,
@@ -73,10 +69,9 @@ void	display_hud(t_data *data)
 	mlx_string_put(data->win.mlx, data->win.window, 105 - (offset_steps * 3),
 		123, 0xFFFFFFFF, step_count);
 	mlx_string_put(data->win.mlx, data->win.window, 148 - (offset_rupees * 3),
-		123, 0xFFFFFFFF, rupee_sentence);
+		123, 0xFFFFFFFF, rupee_count);
 	free(step_count);
 	free(rupee_count);
-	free(rupee_sentence);
 }
 
 void	render_map(t_data *data)

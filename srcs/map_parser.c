@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:25:21 by agirardi          #+#    #+#             */
-/*   Updated: 2022/05/08 14:06:52 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/08 14:10:36 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	parse_map(t_map *map)
 {
-	if (!is_rectangular(map) || !check_chars(map) || !check_borders(map))
+	if (!is_rectangular(map) || !check_map_elements(map)
+		|| !check_borders(map))
 		error_handler(PARSING);
 }
 
@@ -29,7 +30,7 @@ int	is_rectangular(t_map *map)
 	return (1);
 }
 
-int	check_chars(t_map *map)
+int	check_map_elements(t_map *map)
 {
 	int		y;
 	int		x;
@@ -42,11 +43,11 @@ int	check_chars(t_map *map)
 		{
 			if (!ft_strchr("01CEP", map->map[y][x]))
 				return (0);
-			if (map->map[y][x] == 'C')
+			else if (map->map[y][x] == 'C')
 				map->rupee_count++;
-			if (map->map[y][x] == 'E')
+			else if (map->map[y][x] == 'E')
 				map->exit_count++;
-			if (map->map[y][x] == 'P')
+			else if (map->map[y][x] == 'P')
 				map->player_count++;
 		}
 	}

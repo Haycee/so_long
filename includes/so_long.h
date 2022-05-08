@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:39 by agirardi          #+#    #+#             */
-/*   Updated: 2022/04/23 02:33:30 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/08 19:20:50 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void	player_ini(t_map *map, t_player *player);
 
 void	parse_map(t_map *map);
 int		check_borders(t_map *map);
-int		check_chars(t_map *map);
+int		check_map_elements(t_map *map);
 int		is_rectangular(t_map *map);
 
 /* map_render.c */
@@ -160,6 +160,10 @@ void	render_map(t_data *data);
 /* map_render_utils.c */
 
 void	change_char(t_map *map, int x, int y);
+char	*get_rupee_sentence(t_data *data);
+
+/* sprite */
+
 void	select_sprite(t_data *data);
 void	select_sprite_2(t_data *data, int x, int y);
 void	select_sprite_3(t_data *data, int x, int y);

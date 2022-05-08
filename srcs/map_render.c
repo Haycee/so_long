@@ -57,7 +57,7 @@ void	display_hud(t_data *data)
 	char	*step_count;
 	int		offset_steps;
 	int		offset_rupees;
-	
+
 	step_count = ft_itoa(data->player.steps);
 	rupee_count = get_rupee_sentence(data);
 	offset_steps = ft_strlen(step_count);

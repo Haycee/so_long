@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 09:14:22 by agirardi          #+#    #+#             */
-/*   Updated: 2022/05/08 19:26:48 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/08 19:55:08 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ char	*get_rupee_sentence(t_data *data)
 	rupee_count = ft_itoa(data->map.rupee_count);
 	buffer = ft_strjoin(ft_itoa(data->player.rupees), "/");
 	rupee_sentence = ft_strjoin(buffer, rupee_count);
+	free(rupee_count);
 	if (rupee_sentence == NULL)
 		error_handler(TECH);
-	free(rupee_count);
 	return (rupee_sentence);
 }

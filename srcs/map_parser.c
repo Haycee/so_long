@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:25:21 by agirardi          #+#    #+#             */
-/*   Updated: 2022/04/22 18:21:18 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/08 13:53:43 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,32 @@ int	check_chars(t_map *map)
 
 int	check_borders(t_map *map)
 {
+
+	printf("map height : %d\n", map->height);
+	// int a = -1;
+	// while (map->map[++a])
+	// {
+	// 	printf("a : %d	%s\n", a, map->map[a]);
+	// }
+	
+
+
 	int	y;
 	int	x;
 
 	y = -1;
-	while (map->map[++y])
+	while (++y != map->height)
 	{
-		if (y == 0 || y == map->height)
+		if (y == 0 || y == map->height - 1)
 		{
 			x = -1;
 			while (map->map[y][++x])
 			{
-				if (map->map[y][x] != 49)
+				if (map->map[y][x] != '1')
 					return (0);
 			}
 		}
-		if (map->map[y][0] != '1' || map->map[y][map->width - 1] != '1')
+		else if (map->map[y][0] != '1' || map->map[y][map->width - 1] != '1')
 			return (0);
 	}
 	return (1);

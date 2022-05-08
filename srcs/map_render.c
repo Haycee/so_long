@@ -17,10 +17,10 @@ void	create_window(t_win *win, t_map *map)
 {
 	win->height = map->height * 64;
 	win->width = map->width * 64;
-	if (map->height > 20)
-		win->height = 64 * 20;
-	if (map->width > 30)
-		win->width = 64 * 30;
+	if (map->height > 10)
+		win->height = 64 * 10;
+	if (map->width > 20)
+		win->width = 64 * 20;
 	win->mlx = mlx_init();
 	win->window = mlx_new_window(win->mlx, win->width, win->height, "so_long");
 }

@@ -71,6 +71,8 @@ END	:=		\033[0m
 
 all : ${NAME}
 
+.SILENT:
+
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCS) Makefile | $(OBJ_PATH)
 	$(CC) $(CFLAGS) -I $(INC_PATH) -c $< -o $@
 	printf "$(BLUE)> Compiling :$(END) $<\n"
@@ -96,4 +98,3 @@ re : fclean all
 
 .PHONY: all clean fclean re
 
-.SILENT:

@@ -6,15 +6,13 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:34 by agirardi          #+#    #+#             */
-/*   Updated: 2022/04/22 20:32:36 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/08 13:55:05 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-// commentaire dans hook.c
-
-// sanitize etc...
+// commentaire dans hook.c // 
 
 static void	create_map(t_map *map, char *argv)
 {
@@ -29,7 +27,7 @@ static void	create_map(t_map *map, char *argv)
 	while (1)
 	{
 		line = get_next_line(fd);
-		if (line == NULL)
+		if (line == NULL || line[0] == '\n')
 			break ;
 		unprocessed_map = ft_strjoin(unprocessed_map, line);
 		if (!unprocessed_map)

@@ -6,13 +6,13 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 17:07:37 by agirardi          #+#    #+#             */
-/*   Updated: 2022/05/05 17:22:43 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/08 12:33:51 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	print_numbers(unsigned long long nb, unsigned long long b_s, char *b);
+void	print_numbers(unsigned long long nb, unsigned long long b_s, char *b)
 {
 	if (nb < 0)
 	{

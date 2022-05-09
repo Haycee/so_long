@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 13:05:32 by agirardi          #+#    #+#             */
-/*   Updated: 2022/05/05 17:27:00 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/09 10:26:07 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int	key_press(int key, t_data *data)
 {
-	static int	old_step_count = -1;
-
-	old_step_count = data->player.steps;
 	if (data->map.end == 1)
 		close_window(data);
 	if (data->player.orientation != 'f')
@@ -35,11 +32,10 @@ int	key_press(int key, t_data *data)
 	}
 	if (data->player.is_mooving)
 	{
-		if (data->player.steps != old_step_count)
-			ft_printf("Step count : %d\n", data->player.steps);
 		event_listener(data);
 		render_map(data);
 	}
+	print_steps(data);
 	return (0);
 }
 
@@ -70,6 +66,15 @@ int	close_window(t_data *data)
 {
 	mlx_destroy_window(data->win.mlx, data->win.window);
 	exit(0);
+}
+
+void	print_steps(t_data *data)
+{
+	static int	steps = 0;
+
+	if (data->player.steps != steps)
+		printf("Steps : %d\n", data->player.steps);
+	steps = data->player.steps;
 }
 
 int	key_release(int key, t_data *data)

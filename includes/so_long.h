@@ -6,7 +6,7 @@
 /*   By: agirardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 09:57:39 by agirardi          #+#    #+#             */
-/*   Updated: 2022/05/08 19:20:50 by agirardi         ###   ########lyon.fr   */
+/*   Updated: 2022/05/09 10:26:32 by agirardi         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,11 +171,11 @@ void	select_sprite_4(t_data *data, int x, int y);
 
 /* hook.c */
 
-int		check_player_state(t_data *data);
 int		close_window(t_data *data);
 int		key_press(int key, t_data *data);
 int		key_release(int key, t_data *data);
 int		set_animation_state(t_data *data);
+void	print_steps(t_data *data);
 
 /* player.c */
 

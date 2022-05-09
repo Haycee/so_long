@@ -61,4 +61,5 @@ int	main(int argc, char **argv)
 	mlx_hook(data.win.window, 2, 0, key_press, &data);
 	mlx_hook(data.win.window, 17, 0, close_window, &data);
 	mlx_loop(data.win.mlx);
+	return (0);
 }

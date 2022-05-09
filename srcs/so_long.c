@@ -25,8 +25,10 @@ static void	load_map(t_map *map, char *argv)
 	while (1)
 	{
 		line = get_next_line(fd);
-		if (line == NULL || line[0] == '\n')
-			break ;
+		if (line == NULL)
+		  break;
+		if (line[0] == '\n')
+			error_handler(PARSING);
 		unprocessed_map = ft_strjoin(unprocessed_map, line);
 		if (!unprocessed_map)
 			error_handler(TECH);
